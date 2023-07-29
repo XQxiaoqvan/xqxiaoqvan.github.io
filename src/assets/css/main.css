@@ -1,0 +1,27 @@
+body,
+h1,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* 隐藏滚动条 */
+
+body {
+    height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}

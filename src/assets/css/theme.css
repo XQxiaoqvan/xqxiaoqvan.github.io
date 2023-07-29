@@ -1,0 +1,10 @@
+.Theme_colors {
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.219);
+    --theme-bg-color: rgba(255, 255, 255, 0.3); /* 定义背景颜色变量 */
+}
+
+.Frosted_glass {
+    -webkit-backdrop-filter: blur(10px); /* 兼容Safari */
+    backdrop-filter: blur(10px); /* 添加背景模糊效果 */
+}
