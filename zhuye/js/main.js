@@ -57,7 +57,7 @@ window.addEventListener('load', function () {
 
     //延迟加载音乐播放器
     let element = document.createElement("script");
-    element.src = "./zhuye/js/music.js";
+    element.src = "./js/music.js";
     document.body.appendChild(element);
 
     //中文字体缓加载-此处写入字体源文件 （暂时弃用）
@@ -84,12 +84,12 @@ setTimeout(function () {
 // new_element=document.createElement("link");
 // new_element.setAttribute("rel","stylesheet");
 // new_element.setAttribute("type","text/css");
-// new_element.setAttribute("href","./zhuye/css/lantern.css");
+// new_element.setAttribute("href","./css/lantern.css");
 // document.body.appendChild(new_element);
 
 // new_element=document.createElement("script");
 // new_element.setAttribute("type","text/javascript");
-// new_element.setAttribute("src","./zhuye/js/lantern.js");
+// new_element.setAttribute("src","./js/lantern.js");
 // document.body.appendChild(new_element);
 
 //获取一言
