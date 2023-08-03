@@ -2,7 +2,7 @@
 /* 自定义配置 */
 /* 尚未完善 */
 $(function () {
-    let url = "../setting.json"
+    let url = "./setting.json"
     $.getJSON(
         url,
         function (data) {
