@@ -77,17 +77,7 @@ setTimeout(function () {
     $('#loading-text').html("字体及文件加载可能需要一定时间")
 }, 3000);
 
-// 新春灯笼 （ 需要时可取消注释 ）
-// new_element=document.createElement("link");
-// new_element.setAttribute("rel","stylesheet");
-// new_element.setAttribute("type","text/css");
-// new_element.setAttribute("href","./css/lantern.css");
-// document.body.appendChild(new_element);
 
-// new_element=document.createElement("script");
-// new_element.setAttribute("type","text/javascript");
-// new_element.setAttribute("src","./js/lantern.js");
-// document.body.appendChild(new_element);
 
 //获取一言
 fetch('https://v1.hitokoto.cn?max_length=24')
@@ -182,11 +172,9 @@ $('#upWeather').click(function () {
 });
 
 //获取时间
-let t = null;
-t = setTimeout(time, 1000);
+let t = setInterval(time, 1000);
 
 function time() {
-    clearTimeout(t);
     dt = new Date();
     let y = dt.getYear() + 1900;
     let mm = dt.getMonth() + 1;
@@ -206,7 +194,6 @@ function time() {
         s = "0" + s;
     }
     $("#time").html(y + "&nbsp;年&nbsp;" + mm + "&nbsp;月&nbsp;" + d + "&nbsp;日&nbsp;" + "<span class='weekday'>" + weekday[day] + "</span><br>" + "<span class='time-text'>" + h + ":" + m + ":" + s + "</span>");
-    t = setTimeout(time, 1000);
 }
 
 //链接提示文字
