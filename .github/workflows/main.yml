@@ -32,4 +32,5 @@ jobs:
         git config --local user.name "XQxiaoqvan"
         git add fanjv/FJ.html
         git commit -m "Generated FJ.html"
-        git push https://${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
+        git push git@github.com:XQxiaoqvan/xqxiaoqvan.github.io.git HEAD:${{ github.ref }}
+    
