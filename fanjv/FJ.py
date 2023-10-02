@@ -34,6 +34,7 @@ for bangumi_intro in root.find(".//shinBangumiList").iter("BangumiIntro"):
 # 生成HTML
 html_content = "<html>"
 html_content = '<head>'
+html_content = '<title>每日番剧详细</title>'
 html_content = '<style>'
 html_content += """
     .anime-container {
@@ -116,9 +117,6 @@ html_content += """
                             GitHub
                         </a>
                     </td>
-                    <td>
-                        <a href="#" style="text-decoration: none; color: #333; font-size: 18px;">关于我们</a>
-                    </td>
                 </tr>
             </table>
         </td>
@@ -130,7 +128,8 @@ html_content += """
 # 内容部分
 # 获取今天的星期几
 today = (datetime.datetime.now(china_timezone).weekday() + 1) % 7
-print(today)
+# 在控制台输出今天是星期几用于调试取消注释即可
+# print(today)
 
 # 按星期顺序生成内容
 for day in range(7):
