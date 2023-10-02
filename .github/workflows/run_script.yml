@@ -31,5 +31,6 @@ jobs:
     - name: Push to Repository
       uses: ad-m/github-push-action@v0.6.0
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: main
+       github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+       branch: main
+      
