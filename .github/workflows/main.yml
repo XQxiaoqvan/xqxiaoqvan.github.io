@@ -26,18 +26,11 @@ jobs:
     - name: 运行自动更新脚本
       run: python fanjv/FJ.py
 
-    - name: 移动文件到fanjv文件夹
-      run: mv FJ.html fanjv/
-      
-
-    - name: Set up Git
-      run: |
-        git config user.name 'XQxiaoqvan'
-        git config user.email 'xiaoqvandd@qq.com'
-    
-    - name: Push to GitHub
-      run: |
-        git add fanjv/FJ.html
-        git commit -m 'Update FJ.html'
-        git push https://${{ secrets.GITHUB_TOKEN }}@github.com/XQxiaoqvan/xqxiaoqvan.github.io.git HEAD:main
+    - name: 推送更新到 GitHub Pages 仓库
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: main  # 修改为你要推送到的分支
+        repository: XQxiaoqvan/xqxiaoqvan.github.io  # 目标仓库
+        directory: fanjv  # 本地目录
     
