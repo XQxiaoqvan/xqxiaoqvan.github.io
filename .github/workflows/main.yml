@@ -2,9 +2,10 @@ name: Run Python Script
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '16 0 * * *' # 在UTC时间的16:00（也就是中国时间的00:00）运行工作流
 
+  schedule:
+    - cron: '1 18,16 * * *' 
+    
 jobs:
   build:
     runs-on: ubuntu-latest
