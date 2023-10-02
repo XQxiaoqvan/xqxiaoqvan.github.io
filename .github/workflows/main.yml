@@ -2,19 +2,13 @@ name: 更新番剧页面
 
 on:
   workflow_dispatch: # 手动触发
+  
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
 
     steps:
-    - uses: actions/labeler@v4
-      with:
-        repo-token: ${{ secrets.GH_TOKEN }}
-        
     - name: Checkout代码
       uses: actions/checkout@v2
 
@@ -45,5 +39,5 @@ jobs:
       run: |
         git add fanjv/FJ.html
         git commit -m 'Update FJ.html'
-        git push https://${{ secrets.GH_TOKEN }}@github.com/XQxiaoqvan/xqxiaoqvan.github.io.git HEAD:main
+        git push https://${{ secrets.GITHUB_TOKEN }}@github.com/XQxiaoqvan/xqxiaoqvan.github.io.git HEAD:main
     
