@@ -27,7 +27,11 @@ jobs:
       run: echo "Generated HTML content" > fanjv/FJ.html
     
     - name: Create SSH directory
-      run: mkdir -p ~/.ssh
+      run: mkdir -p ~/.ssh、
+      
+    - name: Debug SSH_PRIVATE_KEY
+      run: echo "$SSH_PRIVATE_KEY"
+ 
 
     - name: Debug Information
       run: |
