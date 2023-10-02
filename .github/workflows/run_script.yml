@@ -28,10 +28,14 @@ jobs:
       run: |
         mv FJ.html fanjv/
 
-    - name: Git Push
+    - name: commit
       run: |
-        git config --local user.name "XQxiaoqvan"
-        git config --local user.email "xiaoqvandd@qq.com"
-        git add fanjv/FJ.html
-        git commit -m "Generated FJ.html"
-        git push https://XQxiaoqvan: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@github.com/XQxiaoqvan/xqxiaoqvan.github.io.git HEAD:main
+        git config --global user.email xiaoqvandd@qq.com
+        git config --global user.name XQxiaoqvan
+        git add .
+        git commit -m "update" -a
+        
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
