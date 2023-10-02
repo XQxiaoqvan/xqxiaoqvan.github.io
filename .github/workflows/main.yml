@@ -1,0 +1,26 @@
+name: Daily Drama Push
+
+on:
+  workflow_dispatch: # 手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout代码
+      uses: actions/checkout@v2
+
+    - name: 设置Python环境
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11' # 输入你需要的Python版本
+
+    - name: 安装 requests 模块
+      run: pip install requests
+
+    - name: 安装 pytz 模块
+      run: pip install pytz
+
+    - name: 运行Daily-drama-push.py
+      run: python fanjv/FJ.py

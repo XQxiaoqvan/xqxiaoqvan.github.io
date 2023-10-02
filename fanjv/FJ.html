@@ -1,41 +1,4 @@
-import datetime
-import requests
-import xml.etree.ElementTree as ET
-import pytz
-import os
-
-# 获取中国的时区对象
-china_timezone = pytz.timezone('Asia/Shanghai')
-
-# 使用中国时区获取当前时间
-china_time = datetime.datetime.now(china_timezone)
-
-# 发送请求获取XML数据
-url = "https://api.dandanplay.net/api/v2/homepage?filterAdultContent=true"
-headers = {"Accept": "application/xml"}
-response = requests.get(url, headers=headers)
-response.raise_for_status()
-
-# 解析XML数据
-root = ET.fromstring(response.content)
-
-# 初始化星期分类字典
-weekdays = {0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: []}
-
-# 读取所有BangumiIntro
-for bangumi_intro in root.find(".//shinBangumiList").iter("BangumiIntro"):
-    anime_title = bangumi_intro.find("animeTitle").text
-    image_url = bangumi_intro.find("imageUrl").text
-    air_day = int(bangumi_intro.find("airDay").text)
-
-    # 将数据按星期分类
-    weekdays[air_day].append((anime_title, image_url))
-
-# 生成HTML
-html_content = "<html>"
-html_content = '<head>'
-html_content = '<style>'
-html_content += """
+<style>
     .anime-container {
         position: relative;
         display: inline-block;
@@ -80,10 +43,7 @@ html_content += """
         padding: 5px 10px; /* 适当的内边距 */
         text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); /* 阴影效果 */
     }
-"""
-
-html_content += "</style>"
-html_content += """
+</style>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // 生成1到10的随机数
@@ -99,10 +59,7 @@ html_content += """
         document.body.style.backgroundRepeat = 'no-repeat';
     });
 </script>
-"""
-html_content +='</head><body>'
-# 首页头部标题
-html_content += """
+</head><body>
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
     <tr>
         <td style="background: rgba(255, 255, 255, 0.7); border-bottom: 1px solid #ccc; padding: 10px 20px; border-radius: 5px;">
@@ -126,44 +83,57 @@ html_content += """
 </table>
 
 
-"""
-# 内容部分
-# 获取今天的星期几
-today = (datetime.datetime.now(china_timezone).weekday() + 1) % 7
-print(today)
 
-# 按星期顺序生成内容
-for day in range(7):
-    if day == today:
-        day_name = ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"][day]
-        html_content += f"""
             <div class='flex-container'>
-                <h1 class='today-header'>{day_name}</h1>
+                <h1 class='today-header'>星期一</h1>
             </div>
-        """
-        #番剧信息
-        for anime_title, image_url in weekdays[day]:
-            html_content += f"""
+        
            <div class='anime-container'>
-              <img class='anime-image' src='{image_url}'>
+              <img class='anime-image' src='https://img.dandanplay.net/anime/15866_medium.jpg'>
               <div class='anime-title-container'>
-                  <div class='anime-title'>{anime_title}</div>
+                  <div class='anime-title'>B-PROJECT ～热烈＊Love Call～</div>
               </div>
           </div>
-        """
-# 将当前日期添加到 HTML 内容中
-html_content += f"<p>生成日期：{china_time.strftime('%Y-%m-%d %H:%M:%S')}</p>"
-
-html_content += "</body></html>"
-
-# 获取当前脚本的路径
-script_dir = os.path.dirname(os.path.realpath(__file__))
-
-# 生成HTML文件的路径
-html_file_path = os.path.join(script_dir, 'FJ.html')
-
-# 将HTML内容写入文件
-with open(html_file_path, 'w', encoding='utf-8') as file:
-    file.write(html_content)
-
-print(f'文件生成成功！路径：{html_file_path}')
+        
+           <div class='anime-container'>
+              <img class='anime-image' src='https://img.dandanplay.net/anime/17034_medium.jpg'>
+              <div class='anime-title-container'>
+                  <div class='anime-title'>基米与达利</div>
+              </div>
+          </div>
+        
+           <div class='anime-container'>
+              <img class='anime-image' src='https://img.dandanplay.net/anime/17236_medium.jpg'>
+              <div class='anime-title-container'>
+                  <div class='anime-title'>无职转生Ⅱ ～到了异世界就拿出真本事～</div>
+              </div>
+          </div>
+        
+           <div class='anime-container'>
+              <img class='anime-image' src='https://img.dandanplay.net/anime/17536_medium.jpg'>
+              <div class='anime-title-container'>
+                  <div class='anime-title'>黑暗集会</div>
+              </div>
+          </div>
+        
+           <div class='anime-container'>
+              <img class='anime-image' src='https://img.dandanplay.net/anime/17663_medium.jpg'>
+              <div class='anime-title-container'>
+                  <div class='anime-title'>星灵感应</div>
+              </div>
+          </div>
+        
+           <div class='anime-container'>
+              <img class='anime-image' src='https://img.dandanplay.net/anime/17687_medium.jpg'>
+              <div class='anime-title-container'>
+                  <div class='anime-title'>暴食狂战士~唯有我突破了所谓「等级」的概念~</div>
+              </div>
+          </div>
+        
+           <div class='anime-container'>
+              <img class='anime-image' src='https://img.dandanplay.net/anime/17783_medium.jpg'>
+              <div class='anime-title-container'>
+                  <div class='anime-title'>鸭乃桥论的禁忌推理</div>
+              </div>
+          </div>
+        <p>生成日期：2023-10-02 17:02:58</p></body></html>
