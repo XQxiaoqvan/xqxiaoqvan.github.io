@@ -155,14 +155,8 @@ html_content += f"<p>生成日期：{china_time.strftime('%Y-%m-%d %H:%M:%S')}</
 
 html_content += "</body></html>"
 
-# 获取当前脚本的路径
-script_dir = os.path.dirname(os.path.realpath(__file__))
-
-# 生成HTML文件的路径
-html_file_path = os.path.join(script_dir, 'FJ.html')
-
-# 将HTML内容写入文件
-with open(html_file_path, 'w', encoding='utf-8') as file:
+# 保存HTML内容到文件
+with open("FJ.html", "w", encoding="utf-8") as file:
     file.write(html_content)
 
-print(f'文件生成成功！路径：{html_file_path}')
+print("HTML文件已生成为 FJ.html")
