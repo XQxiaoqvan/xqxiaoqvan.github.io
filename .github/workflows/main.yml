@@ -26,14 +26,15 @@ jobs:
     - name: Create HTML file
       run: echo "Generated HTML content" > fanjv/FJ.html
     
+    - name: Create SSH directory
+      run: mkdir -p ~/.ssh
+
     - name: Debug Information
       run: |
         echo "SSH_PRIVATE_KEY: $SSH_PRIVATE_KEY"
         ls -al ~/.ssh
         cat ~/.ssh/id_rsa
         cat ~/.ssh/known_hosts
-    
-    
 
     - name: Commit and push changes
       run: |
