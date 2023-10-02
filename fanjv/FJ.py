@@ -33,9 +33,9 @@ for bangumi_intro in root.find(".//shinBangumiList").iter("BangumiIntro"):
 
 # 生成HTML
 html_content = "<html>"
-html_content = '<head>'
-html_content = '<title>每日番剧详细</title>'
-html_content = '<style>'
+html_content += '<head>'
+html_content += '<title>每日番剧详细</title>'
+html_content += '<style>'
 html_content += """
     .anime-container {
         position: relative;
