@@ -29,7 +29,7 @@ jobs:
     - name: 推送更新到 GitHub Pages 仓库
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.PAT_TOKEN }}
         branch: main  # 修改为你要推送到的分支
         repository: XQxiaoqvan/xqxiaoqvan.github.io  # 目标仓库
         directory: fanjv  # 本地目录
