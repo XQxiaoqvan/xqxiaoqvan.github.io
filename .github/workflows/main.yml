@@ -6,8 +6,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
 
     steps:
+    - uses: actions/labeler@v4
+      with:
+        repo-token: ${{ secrets.GH_TOKEN }}
+        
     - name: Checkout代码
       uses: actions/checkout@v2
 
@@ -27,6 +34,7 @@ jobs:
 
     - name: 移动文件到fanjv文件夹
       run: mv FJ.html fanjv/
+      
 
     - name: Set up Git
       run: |
