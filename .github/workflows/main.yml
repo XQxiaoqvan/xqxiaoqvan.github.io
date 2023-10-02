@@ -28,10 +28,11 @@ jobs:
     - name: 移动文件到fanjv文件夹
       run: mv FJ.html fanjv/
 
-    - name: 提交文件到仓库
+    - name: 使用令牌推送到仓库
       run: |
         git config user.name 'XQxiaoqvan'
         git config user.email 'xiaoqvandd@qq.com'
         git add fanjv/FJ.html
         git commit -m 'Update FJ.html'
-        git push
+        git push https://${{ secrets.GH_TOKEN }}@github.com/XQxiaoqvan/xqxiaoqvan.github.io.git HEAD:main
+    
