@@ -25,6 +25,14 @@ jobs:
 
     - name: Create HTML file
       run: echo "Generated HTML content" > fanjv/FJ.html
+    
+    - name: Use SSH key
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
+    
 
     - name: Commit and push changes
       run: |
