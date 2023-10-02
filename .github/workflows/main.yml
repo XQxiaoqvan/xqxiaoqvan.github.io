@@ -1,37 +1,35 @@
-name: 更新番剧页面
+name: Generate HTML
 
 on:
-  workflow_dispatch: # 手动触发
-  
+  workflow_dispatch:
 
 jobs:
-  build:
+  generate:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout代码
+    - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: 设置Python环境
+    - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.11' # 输入你需要的Python版本
+        python-version: 3.8
 
-    - name: 安装 requests 模块
-      run: pip install requests
+    - name: Install dependencies
+      run: |
+        pip install requests pytz
 
-    - name: 安装 pytz 模块
-      run: pip install pytz
-
-    - name: 运行自动更新脚本
+    - name: Generate HTML
       run: python fanjv/FJ.py
 
-    - name: 推送更新到 GitHub Pages 仓库
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: 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  # 替换成你的访问令牌
-        branch: main  # 修改为你要推送到的分支
-        repository: XQxiaoqvan/xqxiaoqvan.github.io  # 目标仓库
-        directory: fanjv  # 本地目录
-    
-    
+    - name: Create HTML file
+      run: echo "Generated HTML content" > fanjv/FJ.html
+
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add fanjv/FJ.html
+        git commit -m "Generated FJ.html"
+        git push
