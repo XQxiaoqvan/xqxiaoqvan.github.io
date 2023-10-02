@@ -44,9 +44,10 @@ html_content += """
 
      }
     .anime-container:hover {
+    border-radius: 10px; /* 圆角 */
     transform: translateY(-10px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
      }
     .anime-title-container {
         position: absolute;
@@ -67,8 +68,8 @@ html_content += """
         text-align: center; /* 居中文字 */
     }
     .anime-image {
-        width: 300px;
-        height: 410px; /* 设置统一的高度 */
+        width: 250px;
+        height: 360px; /* 设置统一的高度 */
         object-fit: cover; /* 填充整个框，保持纵横比，可能会被裁剪 */
         border-radius: 10px; /* 添加10px的圆角 */
     }
