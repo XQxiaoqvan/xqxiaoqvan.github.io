@@ -5,6 +5,11 @@
         margin: 3px; /* 设置图片容器之间的间距 */
 
      }
+    .anime-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+     }
     .anime-title-container {
         position: absolute;
         top: 0;
@@ -37,12 +42,32 @@
     }
 
     .today-header {
-        background-color: #ccc; /* 灰色背景 */
+        border-bottom: 1px solid #ccc;
         border-radius: 5px; /* 圆角 */
         display: inline-block; /* 让标题只占据内容的宽度 */
         padding: 5px 10px; /* 适当的内边距 */
-        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); /* 阴影效果 */
+        background: rgba(255, 255, 255, 0.7);
     }
+.footer {
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 5px; /* 圆角 */
+    backdrop-filter: blur(10px); /* 添加模糊玻璃效果 */
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* 背景颜色，根据需要调整 */
+    color: inherit;
+    text-decoration: none;
+}
+.power {
+    color: #ffffff; /* 设置文字颜色为白色 */
+}
+.power a {
+    color: #ffffff; /* 设置链接文字颜色为白色 */
+    text-decoration: none; /* 取消下划线 */
+}
 </style>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -68,10 +93,12 @@
                     <td>
                         <img src="https://www.dandanplay.com/img/logo.png" alt="网站Logo" style="max-height: 50px;">
                     </td>
-                    <td>
-                        <a href="https://github.com/XQxiaoqvan/Daily-drama-push" style="text-decoration: none; color: #333; font-size: 16px;">
-                            GitHub
-                        </a>
+                    <td style="text-align: center;">
+                <a href="https://github.com/XQxiaoqvan/Daily-drama-push" class="text-decoration-none" target="_blank" style="color: #000000; text-decoration: none;"
+                            rel="nofollow"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                              </svg>GitHub
+                            </a>
                     </td>
                 </tr>
             </table>
@@ -82,7 +109,7 @@
 
 
             <div class='flex-container'>
-                <h1 class='today-header'>星期一</h1>
+                <h1 class='today-header'>今天是星期一</h1>
             </div>
         
            <div class='anime-container'>
@@ -133,4 +160,24 @@
                   <div class='anime-title'>鸭乃桥论的禁忌推理</div>
               </div>
           </div>
-        <p>生成日期：2023-10-02 21:53:02</p></body></html>
+        <p>生成日期：2023-10-02 23:24:56</p>
+<footer class="footer">
+    <div class="power">
+                <span id="power">Copyright&nbsp;&copy;
+                    <script>
+                        document.write((new Date()).getFullYear());
+                    </script>
+                    <a href="https://github.com/XQxiaoqvan" id="power-text">xiaoqvan</a>
+                </span>
+                <!-- 站点备案 -->
+                <!--<a href="https://beian.miit.gov.cn" id="beian" target="_blank">&amp;&nbsp;备ICP：</a>-->
+                <a href="https://pages.github.com" class="text-decoration-none" target="_blank"
+                            rel="nofollow">
+                            &amp;&nbsp;本网站托管于 GitHub Pages
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                              </svg></a>
+            </div>
+</footer>
+
+</body></html>
