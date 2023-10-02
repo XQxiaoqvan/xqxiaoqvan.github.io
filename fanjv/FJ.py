@@ -43,6 +43,11 @@ html_content += """
         margin: 3px; /* 设置图片容器之间的间距 */
 
      }
+    .anime-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+     }
     .anime-title-container {
         position: absolute;
         top: 0;
@@ -75,11 +80,11 @@ html_content += """
     }
 
     .today-header {
-        background-color: #ccc; /* 灰色背景 */
+        border-bottom: 1px solid #ccc;
         border-radius: 5px; /* 圆角 */
         display: inline-block; /* 让标题只占据内容的宽度 */
         padding: 5px 10px; /* 适当的内边距 */
-        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); /* 阴影效果 */
+        background: rgba(255, 255, 255, 0.7);
     }
 """
 
@@ -112,8 +117,8 @@ html_content += """
                     <td>
                         <img src="https://www.dandanplay.com/img/logo.png" alt="网站Logo" style="max-height: 50px;">
                     </td>
-                    <td>
-                        <a href="https://github.com/XQxiaoqvan/Daily-drama-push" style="text-decoration: none; color: #333; font-size: 16px;">
+                    <td style="text-align: center;">
+                        <a href="https://github.com/XQxiaoqvan/Daily-drama-push" style="text-decoration: none;">
                             GitHub
                         </a>
                     </td>
@@ -137,7 +142,7 @@ for day in range(7):
         day_name = ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"][day]
         html_content += f"""
             <div class='flex-container'>
-                <h1 class='today-header'>{day_name}</h1>
+                <h1 class='today-header'>今天是{day_name}</h1>
             </div>
         """
         #番剧信息
