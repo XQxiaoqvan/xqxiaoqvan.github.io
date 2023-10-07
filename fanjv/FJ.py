@@ -33,10 +33,20 @@ for bangumi_intro in root.find(".//bangumiList").iter("BangumiIntro"):
 
 # 生成HTML
 html_content = "<html>"
-html_content += '<head>'
+html_content += '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
 html_content += '<title>每日番剧详细</title>'
 html_content += '<style>'
 html_content += """
+    @media screen and (max-width: 600px) {
+  .anime-container {
+    width: 47.6%; /* 在小屏幕上，一排只显示两个 */
+  }
+  .anime-image {
+    max-width: 100%;
+    max-height: 280px;
+    object-fit: cover; /* 填充整个框，保持纵横比，可能会被裁剪 */
+}
+}
     .anime-container {
         position: relative;
         display: inline-block;
