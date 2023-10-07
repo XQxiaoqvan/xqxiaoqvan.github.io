@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>获取OneDrive直链</title>
+<link rel="icon" href="icon.png" type="image/x-png" />
+<link rel="shortcut icon" href="icon.png" type="image/x-png" />
+<link href="style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="https://js.live.net/v7.2/OneDrive.js"></script>
+<!--<script type="text/javascript" src="OneDrive.js"></script>-->
+<script type="text/javascript" src="script.js"></script>
+<!--<script type="text/javascript" src="debug.js"></script>-->
+</head>
+
+<body>
+	<h1>获取OneDrive直链</h1>
+	<p>本应用的目的是为了获取OneDrive直链，方便在其他站点外链。本应用使用OneDrive官方API来进行获取，确保不失效。
+	</p>
+	<h3>项目地址</h3>
+	<p>
+		<a href="https://github.com/gongzhaoxu/GetOneDriveDirectLink" target="_blank">https://github.com/gongzhaoxu/GetOneDriveDirectLink</a>
+	</p>
+	<h3>隐私声明</h3>
+	<p>使用微软官方API，这里不会得到你的账号密码和其他用户资料。<br>
+	目前仅申请了Files.Read、Files.Read.Selected两个权限，API只会返回用户选择的文件的信息，不会获得其他内容。
+	</p>
+	<h3>使用方法</h3>
+	<ul class="howtouse">
+		<li>点击<span class="openbtn" title="不是点我，真的按钮在下面呢" onclick="alert('不是点我，真的按钮在下面呢')">从OneDrive选择文件</span>按钮，等待打开新窗口。</li>
+		<li>在新窗口中登陆OneDrive对应的账户并授予需要的权限。</li>
+		<li>进入OneDrive“公开”文件夹内选择需要获取直链的文件（同一文件夹内可多选），点击打开。</li>
+		<li>选择需要输出的掩码格式，输出面板内会自动生成对应的格式。</li>
+	</ul>
+<div class="picker">
+	<h3>控制面板</h3>
+	<button class="openbtn" onClick="launchOneDrivePicker('query')">
+		<img src="images/cloud-white-18dp.svg">
+		<span class="oneDriveButton">从OneDrive选择文件</span>
+	</button>
+	<button class="openbtn" onClick="launchOneDrivePicker('share')">
+		<img src="images/share-white-18dp.svg">
+		<span class="oneDriveButton">额外创建分享链接（配合1drv.ws使用）</span>
+	</button>
+	<!--<label><input type="checkbox" class="add-permission">主动添加访问权限（无所有人查看权限的文件）</label>-->
+	<h4>输出掩码选择</h4>
+	<div class="mask-bar">
+		<select class="mask-list" size="5" onclick="mask_select();">
+		</select>
+		<input class="mask-name" type="text" placeholder="自定义名称" />
+		<input class="mask-content" type="text" placeholder="掩码内容" />
+		<input class="mask-add" value="+" type="button" onclick="mask_add();" />
+		<input class="mask-remove" value="-" type="button" onclick="mask_remove();" />
+		<div class="tip">▲以上掩码设置保存在浏览器本地</div>
+	</div>
+</div>
+<div class="output">
+	<h3>输出面板</h3>
+	<div class="outinfo"></div>
+	<textarea class="outcontent"></textarea>
+</div>
+
+	<h3>F&amp;Q</h3>
+	<dl>
+		<dt>如何收回我授予的权限？</dt>
+		<dd>访问微软账户<a href="https://account.live.com/consent/Manage" target="_blank">你已授予访问权限的应用和服务</a>删除即可。</dd>
+		<dt>如何添加通行证？</dt>
+		<dd>选中需要共享的文件夹，点击嵌入<br>
+			<div style="text-align: center;">
+				<img style="width: 60%;" src="images/Image 29.png" alt="点击嵌入"/><br>
+			</div>
+			在右方复制authkey及其值。将来这个文件夹内的文件及子文件夹都只需要这同一个通行码。<br>
+			<div style="text-align: center;">
+				<img style="width: 50%;" src="images/Image 30.png" alt="复制authkey"/><br>
+			</div>
+			如果忘记，可以重复上述步骤重新点击嵌入找到authkey<br>
+		</dd>
+	</dl>
+	</p>
+
+<div class="copyright">Copyright © gongzhaoxu</div>
+
+</body>
+</html>
