@@ -33,7 +33,11 @@ for bangumi_intro in root.find(".//bangumiList").iter("BangumiIntro"):
 
 # 生成HTML
 html_content = "<html>"
-html_content += '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
+html_content = "<head>"
+html_content += """
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">'
+"""
 html_content += '<title>每日番剧详细</title>'
 html_content += '<style>'
 html_content += """
