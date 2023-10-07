@@ -11,7 +11,7 @@ china_timezone = pytz.timezone('Asia/Shanghai')
 china_time = datetime.datetime.now(china_timezone)
 
 # 发送请求获取XML数据
-url = "https://api.dandanplay.net/api/v2/homepage?filterAdultContent=true"
+url = "https://api.dandanplay.net/api/v2/bangumi/shin"
 headers = {"Accept": "application/xml"}
 response = requests.get(url, headers=headers)
 response.raise_for_status()
@@ -23,13 +23,13 @@ root = ET.fromstring(response.content)
 weekdays = {0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: []}
 
 # 读取所有BangumiIntro
-for bangumi_intro in root.find(".//shinBangumiList").iter("BangumiIntro"):
+for bangumi_intro in root.find(".//bangumiList").iter("BangumiIntro"):
     anime_title = bangumi_intro.find("animeTitle").text
-    image_url = bangumi_intro.find("imageUrl").text
+    image_url = bangumi_intro.find("imageUrl").text 
     air_day = int(bangumi_intro.find("airDay").text)
-
+    rating = bangumi_intro.find("rating").text
     # 将数据按星期分类
-    weekdays[air_day].append((anime_title, image_url))
+    weekdays[air_day].append((anime_title, image_url, rating))  # 将rating也添加到元组中
 
 # 生成HTML
 html_content = "<html>"
@@ -73,6 +73,16 @@ html_content += """
         object-fit: cover; /* 填充整个框，保持纵横比，可能会被裁剪 */
         border-radius: 10px; /* 添加10px的圆角 */
     }
+    .anime-rating {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 30px; /* 你可以根据需要调整字体大小 */
+  }
     .flex-container {
         display: flex;
         justify-content: space-between;
@@ -169,13 +179,14 @@ for day in range(7):
             </div>
         """
         #番剧信息
-        for anime_title, image_url in weekdays[day]:
+        for anime_title, image_url, rating in weekdays[day]:
             html_content += f"""
            <div class='anime-container'>
               <img class='anime-image' src='{image_url}'>
               <div class='anime-title-container'>
                   <div class='anime-title'>{anime_title}</div>
               </div>
+              <div class="anime-rating">{rating}</div>
           </div>
         """
 # 将当前日期添加到 HTML 内容中
