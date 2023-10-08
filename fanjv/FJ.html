@@ -94,19 +94,32 @@
 }
 </style>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // 生成1到10的随机数
-        var randomNum = Math.floor(Math.random() * 10) + 1;
+window.onload = function() {
+    var imageLinks = [
+        "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L3AveGlhb3F2YW5fMzY1L0VVcVptdUVQeWVWRmxTaVVWWG9hZ000QjBPaVRLcTNOdXlsUGVZQ2RTaEFWcUE_ZT1IeEVjdmY.webp",
+        "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L3AveGlhb3F2YW5fMzY1L0VZM2NGNU1wVUNSSm9qTkZYWGhJMkN3Ql9JUEowVDIwbDhudHZ4X2xtcG02aGc_ZT1PV1F2ck0.webp"
+    ];
 
-        // 设置背景图片链接
-        var backgroundImageUrl = 'https://xiaoqvan.top/zhuye/img/background' + randomNum + '.webp';
+    // 检查本地存储中是否已经保存了链接
+    var cachedImageUrl = localStorage.getItem('backgroundImageUrl');
 
-        // 应用背景样式
-        document.body.style.backgroundImage = 'url(' + backgroundImageUrl + ')';
-        document.body.style.backgroundSize = 'cover';
-        document.body.style.backgroundPosition = 'center';
-        document.body.style.backgroundRepeat = 'no-repeat';
-    });
+    if (cachedImageUrl) {
+        document.body.style.backgroundImage = "url('" + cachedImageUrl + "')";
+    } else {
+        var randomIndex = Math.floor(Math.random() * imageLinks.length);
+        var randomImageUrl = imageLinks[randomIndex];
+
+        // 保存链接到本地存储
+        localStorage.setItem('backgroundImageUrl', randomImageUrl);
+
+        document.body.style.backgroundImage = "url('" + randomImageUrl + "')";
+    }
+
+    // 设置背景图片裁剪为屏幕大小
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundAttachment = "fixed";
+
+};
 </script>
 </head><body>
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -133,153 +146,57 @@
 
 
             <div class='flex-container'>
-                <h1 class='today-header'>今天是星期天</h1>
+                <h1 class='today-header'>今天是星期一</h1>
             </div>
         
            <div class='anime-container'>
-              <img class='anime-image' src='https://img.dandanplay.net/anime/15625_medium.jpg'>
+              <img class='anime-image' src='https://img.dandanplay.net/anime/15866_medium.jpg'>
               <div class='anime-title-container'>
-                  <div class='anime-title'>偶像大师 百万现场！</div>
+                  <div class='anime-title'>B-PROJECT ～热烈＊Love Call～</div>
               </div>
-              <div class="anime-rating">6.70</div>
+              <div class="anime-rating">3.40</div>
           </div>
         
            <div class='anime-container'>
-              <img class='anime-image' src='https://img.dandanplay.net/anime/17031_medium.jpg'>
+              <img class='anime-image' src='https://img.dandanplay.net/anime/17034_medium.jpg'>
               <div class='anime-title-container'>
-                  <div class='anime-title'>猪肝记得煮熟再吃</div>
+                  <div class='anime-title'>基米与达利</div>
+              </div>
+              <div class="anime-rating">5.80</div>
+          </div>
+        
+           <div class='anime-container'>
+              <img class='anime-image' src='https://img.dandanplay.net/anime/17536_medium.jpg'>
+              <div class='anime-title-container'>
+                  <div class='anime-title'>黑暗集会</div>
+              </div>
+              <div class="anime-rating">6.60</div>
+          </div>
+        
+           <div class='anime-container'>
+              <img class='anime-image' src='https://img.dandanplay.net/anime/17663_medium.jpg'>
+              <div class='anime-title-container'>
+                  <div class='anime-title'>星灵感应</div>
               </div>
               <div class="anime-rating">0.00</div>
           </div>
         
            <div class='anime-container'>
-              <img class='anime-image' src='https://img.dandanplay.net/anime/17263_medium.jpg'>
+              <img class='anime-image' src='https://img.dandanplay.net/anime/17687_medium.jpg'>
               <div class='anime-title-container'>
-                  <div class='anime-title'>狩龙人拉格纳</div>
+                  <div class='anime-title'>暴食狂战士~唯有我突破了所谓「等级」的概念~</div>
               </div>
-              <div class="anime-rating">6.20</div>
+              <div class="anime-rating">5.50</div>
           </div>
         
            <div class='anime-container'>
-              <img class='anime-image' src='https://img.dandanplay.net/anime/17264_medium.jpg'>
+              <img class='anime-image' src='https://img.dandanplay.net/anime/17783_medium.jpg'>
               <div class='anime-title-container'>
-                  <div class='anime-title'>FLCL: Grunge</div>
+                  <div class='anime-title'>鸭乃桥论的禁忌推理</div>
               </div>
-              <div class="anime-rating">4.00</div>
+              <div class="anime-rating">5.90</div>
           </div>
-        
-           <div class='anime-container'>
-              <img class='anime-image' src='https://img.dandanplay.net/anime/17265_medium.jpg'>
-              <div class='anime-title-container'>
-                  <div class='anime-title'>FLCL: Shoegaze</div>
-              </div>
-              <div class="anime-rating">3.00</div>
-          </div>
-        
-           <div class='anime-container'>
-              <img class='anime-image' src='https://img.dandanplay.net/anime/17355_medium.jpg'>
-              <div class='anime-title-container'>
-                  <div class='anime-title'>七大罪 默示录的四骑士</div>
-              </div>
-              <div class="anime-rating">0.00</div>
-          </div>
-        
-           <div class='anime-container'>
-              <img class='anime-image' src='https://img.dandanplay.net/anime/17501_medium.jpg'>
-              <div class='anime-title-container'>
-                  <div class='anime-title'>香格里拉·弗陇提亚～屎作猎人向神作发起挑战～</div>
-              </div>
-              <div class="anime-rating">7.60</div>
-          </div>
-        
-           <div class='anime-container'>
-              <img class='anime-image' src='https://img.dandanplay.net/anime/17608_medium.jpg'>
-              <div class='anime-title-container'>
-                  <div class='anime-title'>堤亚穆帝国物语～从断头台开始，公主重生后的逆转人生～</div>
-              </div>
-              <div class="anime-rating">0.00</div>
-          </div>
-        
-           <div class='anime-container'>
-              <img class='anime-image' src='https://img.dandanplay.net/anime/17614_medium.jpg'>
-              <div class='anime-title-container'>
-                  <div class='anime-title'>凹凸魔女的母女故事</div>
-              </div>
-              <div class="anime-rating">5.00</div>
-          </div>
-        
-           <div class='anime-container'>
-              <img class='anime-image' src='https://img.dandanplay.net/anime/17832_medium.jpg'>
-              <div class='anime-title-container'>
-                  <div class='anime-title'>ドッグシグナル</div>
-              </div>
-              <div class="anime-rating">0.00</div>
-          </div>
-        
-           <div class='anime-container'>
-              <img class='anime-image' src='https://img.dandanplay.net/anime/17870_medium.jpg'>
-              <div class='anime-title-container'>
-                  <div class='anime-title'>药屋少女的呢喃</div>
-              </div>
-              <div class="anime-rating">0.00</div>
-          </div>
-        
-           <div class='anime-container'>
-              <img class='anime-image' src='https://img.dandanplay.net/anime/17878_medium.jpg'>
-              <div class='anime-title-container'>
-                  <div class='anime-title'>靠着魔法药水在异世界活下去!</div>
-              </div>
-              <div class="anime-rating">0.00</div>
-          </div>
-        
-           <div class='anime-container'>
-              <img class='anime-image' src='https://img.dandanplay.net/anime/17906_medium.jpg'>
-              <div class='anime-title-container'>
-                  <div class='anime-title'>超超超超喜欢你的100个女孩子</div>
-              </div>
-              <div class="anime-rating">0.00</div>
-          </div>
-        
-           <div class='anime-container'>
-              <img class='anime-image' src='https://img.dandanplay.net/anime/17930_medium.jpg'>
-              <div class='anime-title-container'>
-                  <div class='anime-title'>足球小将 第二季 世少篇</div>
-              </div>
-              <div class="anime-rating">5.00</div>
-          </div>
-        
-           <div class='anime-container'>
-              <img class='anime-image' src='https://img.dandanplay.net/anime/17944_medium.jpg'>
-              <div class='anime-title-container'>
-                  <div class='anime-title'>归还者的魔法要特别</div>
-              </div>
-              <div class="anime-rating">0.00</div>
-          </div>
-        
-           <div class='anime-container'>
-              <img class='anime-image' src='https://img.dandanplay.net/anime/18015_medium.jpg'>
-              <div class='anime-title-container'>
-                  <div class='anime-title'>柚木家的四兄弟。</div>
-              </div>
-              <div class="anime-rating">0.00</div>
-          </div>
-        
-           <div class='anime-container'>
-              <img class='anime-image' src='https://img.dandanplay.net/anime/18105_medium.jpg'>
-              <div class='anime-title-container'>
-                  <div class='anime-title'>我们的雨色协议</div>
-              </div>
-              <div class="anime-rating">0.00</div>
-          </div>
-        
-           <div class='anime-container'>
-              <img class='anime-image' src='https://img.dandanplay.net/anime/18182_medium.jpg'>
-              <div class='anime-title-container'>
-                  <div class='anime-title'>小不点</div>
-              </div>
-              <div class="anime-rating">0.00</div>
-          </div>
-        <p>生成日期：2023-10-08 00:17:17</p>
+        <p>生成日期：2023-10-09 00:17:31</p>
 <footer class="footer">
     <div class="power">
                 <span id="power">Copyright&nbsp;&copy;
