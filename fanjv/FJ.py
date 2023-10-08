@@ -136,19 +136,27 @@ html_content += """
 html_content += "</style>"
 html_content += """
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // 生成1到10的随机数
-        var randomNum = Math.floor(Math.random() * 10) + 1;
+window.onload = function() {
+    var imageLinks = [
+        "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L3AveGlhb3F2YW5fMzY1L0VVcVptdUVQeWVWRmxTaVVWWG9hZ000QjBPaVRLcTNOdXlsUGVZQ2RTaEFWcUE_ZT1IeEVjdmY.webp",
+        "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L3AveGlhb3F2YW5fMzY1L0VZM2NGNU1wVUNSSm9qTkZYWGhJMkN3Ql9JUEowVDIwbDhudHZ4X2xtcG02aGc_ZT1PV1F2ck0.webp"
+    ];
 
-        // 设置背景图片链接
-        var backgroundImageUrl = 'https://xiaoqvan.top/zhuye/img/background' + randomNum + '.webp';
+    // 检查本地存储中是否已经保存了链接
+    var cachedImageUrl = localStorage.getItem('backgroundImageUrl');
 
-        // 应用背景样式
-        document.body.style.backgroundImage = 'url(' + backgroundImageUrl + ')';
-        document.body.style.backgroundSize = 'cover';
-        document.body.style.backgroundPosition = 'center';
-        document.body.style.backgroundRepeat = 'no-repeat';
-    });
+    if (cachedImageUrl) {
+        document.body.style.backgroundImage = "url('" + cachedImageUrl + "')";
+    } else {
+        var randomIndex = Math.floor(Math.random() * imageLinks.length);
+        var randomImageUrl = imageLinks[randomIndex];
+
+        // 保存链接到本地存储
+        localStorage.setItem('backgroundImageUrl', randomImageUrl);
+
+        document.body.style.backgroundImage = "url('" + randomImageUrl + "')";
+    }
+};
 </script>
 """
 html_content +='</head><body>'
