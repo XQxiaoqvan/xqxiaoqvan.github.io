@@ -156,6 +156,11 @@ window.onload = function() {
 
         document.body.style.backgroundImage = "url('" + randomImageUrl + "')";
     }
+
+    // 设置背景图片裁剪为屏幕大小
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundAttachment = "fixed";
+
 };
 </script>
 """
