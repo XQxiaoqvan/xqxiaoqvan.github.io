@@ -245,7 +245,7 @@ html_content += """
 html_content += "</body></html>"
 
 # 保存HTML内容到文件
-with open("index.html", "w", encoding="utf-8") as file:
+with open("fanjv/index.html", "w", encoding="utf-8") as file:
     file.write(html_content)
 
 print("HTML文件已生成为 index.html")
