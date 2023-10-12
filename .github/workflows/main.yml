@@ -30,6 +30,8 @@ jobs:
     - name: Move generated HTML
       run: |
         mv index.html fanjv/
+        cp index.html ../ 
+
 
     - name: commit
       run: |
