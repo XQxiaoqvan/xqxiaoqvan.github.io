@@ -36,7 +36,7 @@ jobs:
         git config --global user.email xiaoqvandd@qq.com
         git config --global user.name XQxiaoqvan
         git add .
-        git commit -m "update" -a
+        git commit -m "更新番剧信息" -a
         
     - name: Push changes
       uses: ad-m/github-push-action@master
