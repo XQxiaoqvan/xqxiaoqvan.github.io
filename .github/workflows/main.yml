@@ -27,11 +27,6 @@ jobs:
       run: |
         python fanjv/FJ.py
 
-    - name: Move generated HTML
-      run: |
-        mv fanjv/index.html fanjv/
-
-
     - name: commit
       run: |
         git config --global user.email xiaoqvandd@qq.com
