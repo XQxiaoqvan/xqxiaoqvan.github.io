@@ -1,11 +1,61 @@
+var img = document.getElementById('logo-img');
+
+img.onerror = function() {
+    img.src = '../img/tx.jpg'; // 在这里替换为本地图片路径
+};
+
+
+
+
 // 创建一个包含所有背景链接的数组
 var backgroundLinks = [
-    "https://menmiaocy-my.sharepoint.com/personal/xiaoqvan_365_mengacg_com/_layouts/15/download.aspx?UniqueId=9317dc8d-5029-4924-a233-455d7848d82c&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvbWVubWlhb2N5LW15LnNoYXJlcG9pbnQuY29tQGM0Y2IxYzljLWUyNmQtNGUwYi1iY2EyLTcwNDEyNDU2ZmQ1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2OTg2NTgyNjYiLCJleHAiOiIxNjk4NjYxODY2IiwiZW5kcG9pbnR1cmwiOiJYZGVpenQxanR0SkpiaVprWXlnWUQ3eXVqU29aeE8zQ0RaWmRjYnFlRjFrPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTU3IiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJZMG1pczRyWDhFQ2w5ajFHTmhTMVZnPT0iLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiTVRJd1pERm1NRE10WXpWaE1TMDBOalE1TFRrMVptTXRObUV4TXpNeVkyRTBNemM0IiwiYXBwX2Rpc3BsYXluYW1lIjoi6I635Y-WT25lRHJpdmXnm7Tpk74iLCJnaXZlbl9uYW1lIjoieGlhbyIsImZhbWlseV9uYW1lIjoicXZhbiIsImFwcGlkIjoiZDdiNDFhNTItNWJiMy00M2RmLWEyMGMtNjI1OWNiNmExODg2IiwidGlkIjoiYzRjYjFjOWMtZTI2ZC00ZTBiLWJjYTItNzA0MTI0NTZmZDU2IiwidXBuIjoieGlhb3F2YW5AMzY1Lm1lbmdhY2cuY29tIiwicHVpZCI6IjEwMDMyMDAyQjEzOTk2MkIiLCJjYWNoZWtleSI6IjBoLmZ8bWVtYmVyc2hpcHwxMDAzMjAwMmIxMzk5NjJiQGxpdmUuY29tIiwic2NwIjoiYWxsZmlsZXMucmVhZCBhbGxmaWxlcy53cml0ZSBhbGxwcm9maWxlcy5yZWFkIiwidHQiOiIyIiwiaXBhZGRyIjoiMjAuMTkwLjE0NC4xNzIifQ.4Az6CVAhwwlQRum47pH5vdtrwSNdMgOifzK1oSZRwA8&ApiVersion=2.0",
-    "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L3AveGlhb3F2YW5fMzY1L0VZM2NGNU1wVUNSSm9qTkZYWGhJMkN3Ql9JUEowVDIwbDhudHZ4X2xtcG02aGc_ZT1PV1F2ck0.webp",
-    "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L3AveGlhb3F2YW5fMzY1L0VlTW1EWW9fREpSRGdfOGdDWEZ4NG1vQjhqMXl3cnl4dlcwR0gwUVBwc242Z2c_ZT1CODY0Wko.webp",
-    "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L3AveGlhb3F2YW5fMzY1L0VZclIyYTVhR1ZKQnYwQTBldU01bHNJQkh3VkdWQkRZUmlINmNtME1FMjYwSHc_ZT05alVmT3k.webp",
-    "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L3AveGlhb3F2YW5fMzY1L0VVOUMwbllCSGR0RnJfT1dmMnRJTjNvQktHajFpT2JqS3dvTVFzSjJqT1Ruenc_ZT1qd0JCeTg.webp"
+    "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VabnhPZXVLMkJKRW5EQkpGdC1Xd0lnQkU5cmZ0Mnhpd2NMNUpaRTQxQnk3OGc_ZT1KZ2lnWW8.webp",
+    "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VVcVptdUVQeWVWRmxTaVVWWG9hZ000QlN5Z0l2T1hpZ09yWkRpN3IweWkwTUE.webp",
+    "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VlTW1EWW9fREpSRGdfOGdDWEZ4NG1vQjhRRkFxMWRhOWF4TjRwazh2RnUxdGc.webp",
+    "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VRcXRKNGpLS0lWQ2h6NHFwZEZSQmFVQmllVHpzZDk4Qmc0R0tra3dJMEo4U1E_ZT1mU3ZhV0Y.webp",
+    "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VZclIyYTVhR1ZKQnYwQTBldU01bHNJQkh3VkdWQkRZUmlINmNtME1FMjYwSHc.webp",
+    "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VZX1VSVmx6Z081S25WbEg3enhNcENJQkhual9lM3M3bWhXMWtJcW90WTE0Q3c_ZT1hMGZmMjk.webp",
+    "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VYUjRQcVRnQnM5R250R2VQRWVndDRjQk5qa21IeUx3d3EyWE1yMm9OQzh3MVE_ZT01d213dFg.webp",
+    "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VmNGhMYXNNdU1WT2dxVWhWTVdZSTVRQkE5dnhrOHFmZjFLN2VRNUJJVFdxemc.webp",
+    "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VVOUMwbllCSGR0RnJfT1dmMnRJTjNvQlpOZ0xsakNzZnRQWjVJMTJvY3dubFE.webp",
+    "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VZM2NGNU1wVUNSSm9qTkZYWGhJMkN3Ql9JUEowVDIwbDhudHZ4X2xtcG02aGc.webp"
 ];
+
+// 创建一个函数来检查图片链接是否有效
+function checkImage(url, success, failure) {
+    var img = new Image();
+    img.onload = function() { success(url); };
+    img.onerror = function() { failure(url); };
+    img.src = url;
+}
+
+// 创建一个函数来尝试设置背景图片
+function setBackgroundLink(links, index, defaultLink) {
+    if (index >= links.length) {
+        // 如果所有链接都已尝试过，就使用默认链接
+        setAndStoreBackgroundLink(defaultLink);
+    } else {
+        // 尝试设置背景图片
+        checkImage(
+            links[index],
+            function(url) {
+                // 如果链接有效，就设置背景图片
+                setAndStoreBackgroundLink(url);
+            },
+            function(url) {
+                // 如果链接无效，就尝试下一个链接
+                setBackgroundLink(links, index + 1, defaultLink);
+            }
+        );
+    }
+}
+
+// 创建一个函数来设置并存储背景链接
+function setAndStoreBackgroundLink(link) {
+    var bgElement = document.getElementById("bg");
+    bgElement.src = link;
+    localStorage.setItem("backgroundLink", link);
+}
 
 // 清除本地存储中的背景链接
 localStorage.removeItem("backgroundLink");
@@ -13,12 +63,9 @@ localStorage.removeItem("backgroundLink");
 // 尝试从本地存储中获取背景链接
 var storedBackgroundLink = localStorage.getItem("backgroundLink");
 
-// 如果本地存储中有背景链接，则使用它，否则随机选择一个
-var selectedBackgroundLink = storedBackgroundLink || backgroundLinks[Math.floor(Math.random() * backgroundLinks.length)];
-
-// 将选定的链接设置为背景图片
-var bgElement = document.getElementById("bg");
-bgElement.src = selectedBackgroundLink;
-
-// 将选定的链接存储到本地
-localStorage.setItem("backgroundLink", selectedBackgroundLink);
+// 如果本地存储中有背景链接，则使用它，否则尝试设置背景链接
+if (storedBackgroundLink) {
+    setAndStoreBackgroundLink(storedBackgroundLink);
+} else {
+    setBackgroundLink(backgroundLinks, 0, "../img/background9.webp");
+}
