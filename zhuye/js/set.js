@@ -29,22 +29,27 @@ function checkImage(url, success, failure) {
     img.src = url;
 }
 
-// 创建一个函数来尝试设置背景图片
-function setBackgroundLink(links, index, defaultLink) {
-    if (index >= links.length) {
+// 创建一个函数来随机设置背景图片
+function setBackgroundLink(links, defaultLink) {
+    if (links.length === 0) {
         // 如果所有链接都已尝试过，就使用默认链接
         setAndStoreBackgroundLink(defaultLink);
     } else {
+        // 随机选择一个链接
+        var index = Math.floor(Math.random() * links.length);
+        var url = links[index];
+
         // 尝试设置背景图片
         checkImage(
-            links[index],
+            url,
             function(url) {
                 // 如果链接有效，就设置背景图片
                 setAndStoreBackgroundLink(url);
             },
             function(url) {
-                // 如果链接无效，就尝试下一个链接
-                setBackgroundLink(links, index + 1, defaultLink);
+                // 如果链接无效，就从数组中移除它并尝试下一个链接
+                links.splice(index, 1);
+                setBackgroundLink(links, defaultLink);
             }
         );
     }
@@ -67,5 +72,6 @@ var storedBackgroundLink = localStorage.getItem("backgroundLink");
 if (storedBackgroundLink) {
     setAndStoreBackgroundLink(storedBackgroundLink);
 } else {
-    setBackgroundLink(backgroundLinks, 0, "../img/background9.webp");
+    var randomIndex = Math.floor(Math.random() * 11); // 生成一个0到10之间的随机整数
+    setBackgroundLink(backgroundLinks, randomIndex, "../img/background" + randomIndex + ".webp");
 }

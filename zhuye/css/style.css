@@ -1,4 +1,3 @@
-
 @charset "utf-8";
 
 /* @font-face {
@@ -19,7 +18,9 @@
     src: url('../font/UnidreamLED.ttf') format('truetype');
 }
 
+
 /*全局样式*/
+
 html,
 body {
     width: 100%;
@@ -40,7 +41,6 @@ p {
     user-select: none;
     cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='10px' height='10px'><circle cx='4' cy='4' r='4' fill='white' /></svg>") 4 4, auto !important;
 }
-
 
 a:hover {
     color: white;
@@ -67,7 +67,9 @@ a:hover {
     margin: 14px 0px;
 }
 
+
 /*鼠标样式*/
+
 #g-pointer-1 {
     display: none;
 }
@@ -85,7 +87,9 @@ a:hover {
     z-index: 9999999;
 }
 
+
 /*背景*/
+
 .bg-all {
     z-index: -1;
     position: absolute;
@@ -124,7 +128,9 @@ img.error {
     transition: .25s;
 }
 
+
 /*页面样式*/
+
 section {
     display: block;
     position: fixed;
@@ -172,7 +178,9 @@ main {
     align-items: center;
 }
 
+
 /*头像*/
+
 .main-img {
     display: flex;
     align-items: center;
@@ -203,7 +211,9 @@ span.img-text {
     font-family: 'Pacifico-Regular' !important;
 }
 
+
 /*简介*/
+
 .message {
     background: rgb(0 0 0 / 25%);
     backdrop-filter: blur(10px);
@@ -234,7 +244,9 @@ span#change {
     align-self: flex-end;
 }
 
+
 /*社交链接*/
+
 .social {
     margin-top: 1rem;
     display: flex;
@@ -247,6 +259,7 @@ span#change {
     font-size: 1.45rem;
     margin: 2px 12px;
 }
+
 
 /*
 .social .link i:hover {
@@ -261,7 +274,9 @@ span#change {
     margin-right: 1rem;
 }
 
+
 /*一言*/
+
 .col.hitokotos {
     margin-right: 0.75rem;
 }
@@ -324,6 +339,7 @@ span#change {
 
 
 /*时间卡片*/
+
 .col.times {
     margin-left: 0.75rem;
 }
@@ -353,7 +369,9 @@ span.time-text {
     justify-content: center;
 }
 
+
 /*分割线*/
+
 .line {
     margin: 1rem 0.25rem;
     margin-top: 2rem;
@@ -371,7 +389,9 @@ i.iconfont.icon-link {
     font-size: 1.2rem;
 }
 
+
 /*链接卡片*/
+
 .link-card {
     height: 100px;
     width: 100%;
@@ -408,7 +428,9 @@ i.iconfont.icon-z_shangpinheji {
     font-size: 2rem;
 }
 
+
 /*更多页面*/
+
 .more {
     display: none !important;
     width: 46%;
@@ -439,6 +461,7 @@ i.iconfont.icon-z_shangpinheji {
     display: none;
 }
 
+
 /*关闭按钮*/
 
 .close {
@@ -453,7 +476,9 @@ i.iconfont.icon-z_shangpinheji {
     transform: scale(1.2);
 }
 
+
 /*时间胶囊*/
+
 .progress {
     width: 100%;
     height: 20px;
@@ -478,13 +503,16 @@ i.iconfont.icon-z_shangpinheji {
     margin: 1rem 0rem 0.5rem 0rem;
 }
 
+
 /*其他链接*/
 
 .mores .link-card {
     height: 48px !important;
 }
 
+
 /*更多页面*/
+
 .box-left {
     flex: 0 44%;
     min-width: 400px;
@@ -543,7 +571,6 @@ i.iconfont.icon-z_shangpinheji {
     color: white !important;
     background-color: transparent;
     transition: 0.3s;
-
 }
 
 .accordion-button:focus {
@@ -588,7 +615,9 @@ i.iconfont.icon-github1 {
     font-size: 1.45rem;
 }
 
+
 /*个性设置*/
+
 .set {
     display: flex;
     flex-direction: column;
@@ -654,7 +683,9 @@ input[type="radio"]:checked+label {
     border: 2px solid #eeeeee;
 }
 
+
 /*更新日志*/
+
 .upnote {
     display: flex;
     flex-direction: column;
@@ -669,12 +700,15 @@ input[type="radio"]:checked+label {
 
 
 /*移动端页面切换按钮*/
+
 i.iconfont.icon-bars,
 i.iconfont.icon-times {
     font-size: 1.25rem;
 }
 
+
 /*页脚样式*/
+
 footer {
     text-align: center;
     height: 46px;
@@ -694,6 +728,7 @@ footer {
 
 
 /*弹窗样式*/
+
 .iziToast {
     backdrop-filter: blur(10px) !important;
 }
@@ -733,4 +768,3 @@ footer {
     background: url(https://cdn.jsdelivr.net/gh/imsyy/file/pic/close.png) no-repeat 50% 50% !important;
     background-size: 8px !important;
 }
-
