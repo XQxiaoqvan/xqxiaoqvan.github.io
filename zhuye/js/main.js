@@ -1,4 +1,3 @@
-
 //弹窗样式
 iziToast.settings({
     timeout: 10000,
@@ -29,7 +28,7 @@ function setPosition(x, y) {
 }
 
 body.addEventListener('mousemove', (e) => {
-    window.requestAnimationFrame(function () {
+    window.requestAnimationFrame(function() {
         setPosition(e.clientX, e.clientY);
     });
 });
@@ -37,7 +36,7 @@ body.addEventListener('mousemove', (e) => {
 
 
 //加载完成后执行
-window.addEventListener('load', function () {
+window.addEventListener('load', function() {
 
     //载入动画
     $('#loading-box').attr('class', 'loaded');
@@ -46,7 +45,7 @@ window.addEventListener('load', function () {
     $('#section').css("cssText", "transform: scale(1) !important;opacity: 1 !important;filter: blur(0px) !important");
 
     //用户欢迎
-    setTimeout(function () {
+    setTimeout(function() {
         iziToast.show({
             timeout: 2500,
             icon: false,
@@ -73,7 +72,7 @@ window.addEventListener('load', function () {
 
 }, false)
 
-setTimeout(function () {
+setTimeout(function() {
     $('#loading-text').html("字体及文件加载可能需要一定时间")
 }, 3000);
 
@@ -89,10 +88,10 @@ fetch('https://v1.hitokoto.cn?max_length=24')
     .catch(console.error)
 
 let times = 0;
-$('#hitokoto').click(function () {
+$('#hitokoto').click(function() {
     if (times == 0) {
         times = 1;
-        let index = setInterval(function () {
+        let index = setInterval(function() {
             times--;
             if (times == 0) {
                 clearInterval(index);
@@ -115,42 +114,48 @@ $('#hitokoto').click(function () {
 });
 
 //获取天气
-//请前往 https://www.mxnzp.com/doc/list 申请 app_id 和 app_secret
-//请前往 https://dev.qweather.com/ 申请 key
-const add_id = "gxe8ivslmokgpq0q"; // app_id
-const app_secret = "JDjohkZ0bWHqCAtNTWFRV7K2LX0IUh19"; // app_secret
-const key = "23c551974c0d48b9bc83c91353271277" // key
+//请前往高德开放平台 https://lbs.amap.com 获取Web服务key
+const apiKey = "0ea4f86a43f78a2972955f0973f05fb0"; //填写高德地图key
+const ipApiUrl = `https://restapi.amap.com/v3/ip?key=${apiKey}`;
+
 function getWeather() {
-    fetch("https://www.mxnzp.com/api/ip/self?app_id=" + add_id + "&app_secret=" + app_secret)
+    fetch(ipApiUrl)
         .then(response => response.json())
         .then(data => {
-            let str = data.data.city
-            let city = str.replace(/市/g, '')
-            $('#city_text').html(city);
-            fetch("https://geoapi.qweather.com/v2/city/lookup?location=" + city + "&number=1&key=" + key)
+            const adcode = data.adcode;
+            const weatherApiUrl = `https://restapi.amap.com/v3/weather/weatherInfo?city=${adcode}&key=${apiKey}`;
+
+            fetch(weatherApiUrl)
                 .then(response => response.json())
-                .then(location => {
-                    let id = location.location[0].id
-                    fetch("https://devapi.qweather.com/v7/weather/now?location=" + id + "&key=" + key)
-                        .then(response => response.json())
-                        .then(weather => {
-                            $('#wea_text').html(weather.now.text)
-                            $('#tem_text').html(weather.now.temp + "°C&nbsp;")
-                            $('#win_text').html(weather.now.windDir)
-                            $('#win_speed').html(weather.now.windScale + "级")
-                        })
+                .then(data => {
+                    const weatherInfo = data.lives[0];
+                    const city = weatherInfo.city.replace("市", "");
+                    const weather = weatherInfo.weather;
+                    const temperature = weatherInfo.temperature + "℃";
+                    const winddirection = weatherInfo.winddirection + "风";
+                    const windpower = weatherInfo.windpower + "级";
+
+                    // 更新页面元素
+                    document.getElementById("city_text").textContent = city;
+                    document.getElementById("wea_text").textContent = weather;
+                    document.getElementById("tem_text").textContent = temperature;
+                    document.getElementById("win_text").textContent = winddirection;
+                    document.getElementById("win_speed").textContent = windpower;
                 })
+                .catch(error => console.error('获取天气信息时发生错误：', error));
         })
-        .catch(console.error);
+        .catch(error => console.error('获取adcode时发生错误：', error));
 }
 
+// 调用函数获取天气信息
 getWeather();
 
+
 let wea = 0;
-$('#upWeather').click(function () {
+$('#upWeather').click(function() {
     if (wea == 0) {
         wea = 1;
-        let index = setInterval(function () {
+        let index = setInterval(function() {
             wea--;
             if (wea == 0) {
                 clearInterval(index);
@@ -197,7 +202,7 @@ function time() {
 }
 
 //链接提示文字
-$("#social").mouseover(function () {
+$("#social").mouseover(function() {
     $("#social").css({
         "background": "rgb(0 0 0 / 25%)",
         'border-radius': '6px',
@@ -206,7 +211,7 @@ $("#social").mouseover(function () {
     $("#link-text").css({
         "display": "block",
     });
-}).mouseout(function () {
+}).mouseout(function() {
     $("#social").css({
         "background": "none",
         "border-radius": "6px",
@@ -217,29 +222,29 @@ $("#social").mouseover(function () {
     });
 });
 
-$("#github").mouseover(function () {
+$("#github").mouseover(function() {
     $("#link-text").html("去 Github 看看");
-}).mouseout(function () {
+}).mouseout(function() {
     $("#link-text").html("通过这里联系我");
 });
-$("#qq").mouseover(function () {
+$("#qq").mouseover(function() {
     $("#link-text").html("有什么事吗");
-}).mouseout(function () {
+}).mouseout(function() {
     $("#link-text").html("通过这里联系我");
 });
-$("#email").mouseover(function () {
+$("#email").mouseover(function() {
     $("#link-text").html("来封 Email");
-}).mouseout(function () {
+}).mouseout(function() {
     $("#link-text").html("通过这里联系我");
 });
-$("#bilibili").mouseover(function () {
+$("#bilibili").mouseover(function() {
     $("#link-text").html("来 B 站看看 ~");
-}).mouseout(function () {
+}).mouseout(function() {
     $("#link-text").html("通过这里联系我");
 });
-$("#telegram").mouseover(function () {
+$("#telegram").mouseover(function() {
     $("#link-text").html("你懂的 ~");
-}).mouseout(function () {
+}).mouseout(function() {
     $("#link-text").html("通过这里联系我");
 });
 
@@ -256,8 +261,8 @@ for (let day of days) {
         );
         $("#change").html("Silence&nbsp;in&nbsp;silence");
         $("#change1").html("今天是中国国家纪念日，全站已切换为黑白模式");
-        window.addEventListener('load', function () {
-            setTimeout(function () {
+        window.addEventListener('load', function() {
+            setTimeout(function() {
                 iziToast.show({
                     timeout: 14000,
                     icon: "fa-solid fa-clock",
@@ -270,7 +275,7 @@ for (let day of days) {
 
 //更多页面切换
 let shoemore = false;
-$('#switchmore').on('click', function () {
+$('#switchmore').on('click', function() {
     shoemore = !shoemore;
     if (shoemore && $(document).width() >= 990) {
         $('#container').attr('class', 'container mores');
@@ -284,13 +289,13 @@ $('#switchmore').on('click', function () {
 });
 
 //更多页面关闭按钮
-$('#close').on('click', function () {
+$('#close').on('click', function() {
     $('#switchmore').click();
 });
 
 //移动端菜单栏切换
 let switchmenu = false;
-$('#switchmenu').on('click', function () {
+$('#switchmenu').on('click', function() {
     switchmenu = !switchmenu;
     if (switchmenu) {
         $('#row').attr('class', 'row menus');
@@ -302,20 +307,20 @@ $('#switchmenu').on('click', function () {
 });
 
 //更多弹窗页面
-$('#openmore').on('click', function () {
+$('#openmore').on('click', function() {
     $('#box').css("display", "block");
     $('#row').css("display", "none");
     $('#more').css("cssText", "display:none !important");
 });
-$('#closemore').on('click', function () {
+$('#closemore').on('click', function() {
     $('#box').css("display", "none");
     $('#row').css("display", "flex");
     $('#more').css("display", "flex");
 });
 
 //监听网页宽度
-window.addEventListener('load', function () {
-    window.addEventListener('resize', function () {
+window.addEventListener('load', function() {
+    window.addEventListener('resize', function() {
         //关闭移动端样式
         if (window.innerWidth >= 600) {
             $('#row').attr('class', 'row');
@@ -340,7 +345,7 @@ window.addEventListener('load', function () {
 
 //移动端切换功能区
 let changemore = false;
-$('#changemore').on('click', function () {
+$('#changemore').on('click', function() {
     changemore = !changemore;
     if (changemore) {
         $('#rightone').attr('class', 'row menus mobile');
@@ -350,14 +355,14 @@ $('#changemore').on('click', function () {
 });
 
 //更多页面显示关闭按钮
-$("#more").hover(function () {
+$("#more").hover(function() {
     $('#close').css("display", "block");
-}, function () {
+}, function() {
     $('#close').css("display", "none");
 })
 
 //屏蔽右键
-document.oncontextmenu = function () {
+document.oncontextmenu = function() {
     iziToast.show({
         timeout: 2000,
         icon: "fa-solid fa-circle-exclamation",

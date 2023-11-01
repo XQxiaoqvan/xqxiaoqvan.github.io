@@ -49,5 +49,5 @@ document.addEventListener('DOMContentLoaded', function() {
     // 在加载完成后，延迟一段时间再开始检查
     setTimeout(function() {
         myhkScript.onload();
-    }, 2000); // 5000毫秒（5秒）的延迟
+    }, 2000);
 });
