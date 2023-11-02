@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (myhkplayerDiv && myhkplayerDiv.classList.contains('playing')) {
                 if (ulElement) {
-                    footerElement.style.visibility = 'hidden';
+                    footerElement.style.display = 'none';
                 } else {
-                    footerElement.style.visibility = 'visible';
+                    footerElement.style.display = 'block';
                 }
             } else {
-                footerElement.style.visibility = 'visible';
+                footerElement.style.display = 'block';
             }
         }
 
