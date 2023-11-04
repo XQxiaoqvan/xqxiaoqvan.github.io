@@ -142,7 +142,8 @@ function getWeather() {
                     document.getElementById("win_text").textContent = winddirection;
                     document.getElementById("win_speed").textContent = windpower;
                 })
-                .catch(error => console.error('获取天气信息时发生错误：', error));
+                .catch(error => console.error('获取天气信息时发生错误,请不要使用国外ip，或者内网ip地址访问'));
+
         })
         .catch(error => console.error('获取adcode时发生错误：', error));
 }

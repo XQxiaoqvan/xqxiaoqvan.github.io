@@ -51,3 +51,48 @@ document.addEventListener('DOMContentLoaded', function() {
         myhkScript.onload();
     }, 2000);
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    function checkElementExistence() {
+        var myhkplayer = document.getElementById('myhkplayer');
+
+        if (myhkplayer) {
+            var coverElement = myhkplayer.querySelector('.myhkcover.coverplay img');
+            var titleElement = myhkplayer.querySelector('.songstyle .myhksong span');
+
+            if (coverElement && titleElement) {
+                var coverSrc = coverElement.src;
+                var title = titleElement.textContent.trim();
+
+                if ('mediaSession' in navigator) {
+                    navigator.mediaSession.metadata = new MediaMetadata({
+                        title: title,
+                        artwork: [{
+                            src: coverSrc,
+                            sizes: '96x96',
+                            type: 'image/png'
+                        }]
+                    });
+
+                    // 添加上一首和下一首的控制逻辑
+                    navigator.mediaSession.setActionHandler('previoustrack', function() {
+                        var prevButton = document.querySelector('.myhkprev');
+                        if (prevButton) {
+                            prevButton.click(); // 模拟点击上一首按钮
+                        }
+                    });
+
+                    navigator.mediaSession.setActionHandler('nexttrack', function() {
+                        var nextButton = document.querySelector('.myhknext');
+                        if (nextButton) {
+                            nextButton.click(); // 模拟点击下一首按钮
+                        }
+                    });
+                }
+            }
+        }
+    }
+
+    var observer = new MutationObserver(checkElementExistence);
+    observer.observe(document.body, { childList: true, subtree: true });
+});
