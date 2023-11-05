@@ -59,14 +59,17 @@ document.addEventListener('DOMContentLoaded', function() {
         if (myhkplayer) {
             var coverElement = myhkplayer.querySelector('.myhkcover.coverplay img');
             var titleElement = myhkplayer.querySelector('.songstyle .myhksong span');
+            var artistElement = myhkplayer.querySelector('.artiststyle .myhkartist span');
 
-            if (coverElement && titleElement) {
+            if (coverElement && titleElement && artistElement) {
                 var coverSrc = coverElement.src;
                 var title = titleElement.textContent.trim();
+                var artist = artistElement.textContent.trim();
 
                 if ('mediaSession' in navigator) {
                     navigator.mediaSession.metadata = new MediaMetadata({
                         title: title,
+                        artist: artist,
                         artwork: [{
                             src: coverSrc,
                             sizes: '96x96',
