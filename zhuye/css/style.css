@@ -768,3 +768,28 @@ footer {
     background: url(https://cdn.jsdelivr.net/gh/imsyy/file/pic/close.png) no-repeat 50% 50% !important;
     background-size: 8px !important;
 }
+
+.custom-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    /* 添加您想要的按钮样式 */
+    width: 30px;
+    /* 设置按钮宽度 */
+    height: 30px;
+    /* 设置按钮高度 */
+}
+
+.player-row {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    /* 添加边距 */
+}
+
+.player-row i {
+    font-size: 30px !important;
+    margin: 0 10px !important;
+    /* 添加左右边距 */
+}
