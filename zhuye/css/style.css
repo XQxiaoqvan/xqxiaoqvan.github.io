@@ -782,8 +782,8 @@ footer {
 }
 
 .player-row {
-    display: flex;
-    justify-content: center;
+    display: flex !important;
+    justify-content: center !important;
     padding: 10px;
     /* 添加边距 */
 }
@@ -792,4 +792,17 @@ footer {
     font-size: 30px !important;
     margin: 0 10px !important;
     /* 添加左右边距 */
+}
+
+.player-row.align-start {
+    align-items: flex-start !important;
+}
+
+.player-row.align-end {
+    align-items: flex-end !important;
+}
+
+.player-row.center-content {
+    justify-content: center !important;
+    padding: 0 10px;
 }
