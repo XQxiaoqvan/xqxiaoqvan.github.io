@@ -127,9 +127,10 @@ musicPlayer.innerHTML = `
 <div class="player-row" style="display: flex; align-items: flex-end;">
     <div class="player-time">00:00 / 00:00</div>
 </div>
-<div class="player-row">
+<div class="progress-bar">
     <img src="./zhuye/img/music_3_fill.png" class="player-button custom-button" onclick="handleReturnButtonClick()"/>
-</div>
+    <div class="progress"></div>
+  </div>
 `;
 document.getElementById("hitokoto").appendChild(musicPlayer);
 
@@ -203,6 +204,8 @@ function handleReturnButtonClick(event) {
     document.getElementById("hitokoto-content").style.display = originalContentDisplay; // 恢复原始的 CSS 属性
     document.getElementById("music-player").style.display = "none";
 }
+
+
 document.addEventListener('DOMContentLoaded', function() {
     // 创建一个观察器实例
     var observer = new MutationObserver(function(mutations) {
@@ -253,3 +256,34 @@ document.addEventListener('DOMContentLoaded', function() {
     var config = { childList: true, subtree: true };
     observer.observe(document.body, config);
 });
+
+
+
+// 获取进度条元素和包含时间信息的元素
+var progressBar = document.querySelector('.progress-bar');
+var progress = document.querySelector('.progress');
+var playerTime = document.querySelector('.player-time');
+
+// 监听时间信息的变化
+var observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    if (mutation.type === 'characterData') {
+      // 解析时间字符串，提取当前时间和总时间
+      var timeString = playerTime.textContent.trim();
+      var currentTime = parseInt(timeString.split(' / ')[0].split(':')[1]);
+      var totalTime = parseInt(timeString.split(' / ')[1].split(':')[1]);
+
+      // 计算当前播放进度的百分比
+      var progressPercentage = (currentTime / totalTime) * 100;
+
+      // 设置进度条的宽度
+      progress.style.width = progressPercentage + '%';
+    }
+  });
+});
+
+// 配置观察选项
+var config = { characterData: true, subtree: true };
+
+// 传入目标节点和观察选项
+observer.observe(playerTime, config);
