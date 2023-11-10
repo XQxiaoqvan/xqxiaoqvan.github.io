@@ -89,6 +89,19 @@ fetch('https://v1.hitokoto.cn?max_length=24')
 
 let times = 0;
 $('#hitokoto').click(function() {
+    // 获取音乐播放器的 display 属性
+    let musicPlayerDisplay = document.getElementById('music-player').style.display;
+
+    // 如果音乐播放器的 display 属性不是 'none'，则禁用点击刷新一言事件
+    if (musicPlayerDisplay !== 'none') {
+        iziToast.show({
+            timeout: 1000,
+            icon: "fa-solid fa-circle-exclamation",
+            message: '音乐播放器正在使用，无法刷新一言'
+        });
+        return;
+    }
+
     if (times == 0) {
         times = 1;
         let index = setInterval(function() {

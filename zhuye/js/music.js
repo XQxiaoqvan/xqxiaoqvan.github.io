@@ -4,18 +4,19 @@
  * Copyright 2023 xiaoqvan
  * Released under the MIT license
  */
+// 明月浩空播放器引入
 document.addEventListener('DOMContentLoaded', function() {
     var myhkScript = document.createElement('script');
     myhkScript.src = 'https://myhkw.cn/api/player/168460845260';
     myhkScript.id = 'myhk';
     myhkScript.setAttribute('key', '168460845260');
     myhkScript.setAttribute('m', '1');
-
+    // 启用了歌词的在歌词出现后会隐藏掉底部栏
     myhkScript.onload = function() {
         // 定义一个函数，用于检查并处理footer的显示与隐藏
         function checkFooterVisibility() {
             var myhkplayerDiv = document.getElementById('myhkplayer');
-            var footerElement = document.getElementById('footer');
+            var footerElement = document.getElementById('footer'); //要隐藏的元素id
             var myhkLrc = document.getElementById('myhkLrc');
             var ulElement = myhkLrc.querySelector('ul');
 
@@ -57,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         myhkScript.onload();
     }, 2000);
 });
-
+// 对系统的原生播放器通道设置播放器属性会显示歌曲名和歌曲封面，封面目前只测试对win系统生效
 document.addEventListener('DOMContentLoaded', function() {
     function checkElementExistence() {
         var myhkplayer = document.getElementById('myhkplayer');
@@ -107,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
+// 网站内嵌内容将明月浩空嵌入进网站
 var originalContentDisplay = ""; // 保存原始的 CSS 属性
 
 var musicPlayer = document.createElement("div");
@@ -126,10 +127,11 @@ musicPlayer.innerHTML = `
 </div>
 <div class="player-row" style="display: flex; align-items: flex-end;">
     <div class="player-time">00:00 / 00:00</div>
+    
 </div>
-<div class="progress-bar">
+<div>
     <img src="./zhuye/img/music_3_fill.png" class="player-button custom-button" onclick="handleReturnButtonClick()"/>
-    <div class="progress"></div>
+    <progress id="musicprogress-bar" style="width: 90%; margin: 0 5%;" value="0" max="100"></progress>
   </div>
 `;
 document.getElementById("hitokoto").appendChild(musicPlayer);
@@ -205,7 +207,7 @@ function handleReturnButtonClick(event) {
     document.getElementById("music-player").style.display = "none";
 }
 
-
+// 设置歌曲名字和时长
 document.addEventListener('DOMContentLoaded', function() {
     // 创建一个观察器实例
     var observer = new MutationObserver(function(mutations) {
@@ -257,33 +259,41 @@ document.addEventListener('DOMContentLoaded', function() {
     observer.observe(document.body, config);
 });
 
+// 根据时长生成进度条
+document.addEventListener('DOMContentLoaded', function() {
+    // 创建一个观察器实例
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList') {
+                var myhkplayer = document.getElementById('myhkplayer');
+                if (myhkplayer) {
+                    var timeElement = myhkplayer.querySelector('.timestyle .myhktime');
 
+                    if (timeElement) {
+                        var time = timeElement.textContent.trim();
+                        var times = time.split(' / ');
+                        var currentTime = parseTime(times[0]);
+                        var totalTime = parseTime(times[1]);
 
-// 获取进度条元素和包含时间信息的元素
-var progressBar = document.querySelector('.progress-bar');
-var progress = document.querySelector('.progress');
-var playerTime = document.querySelector('.player-time');
+                        var progressBar = document.getElementById('musicprogress-bar');
+                        progressBar.max = totalTime;
+                        progressBar.value = currentTime;
+                    }
+                }
+            }
+        });
+    });
 
-// 监听时间信息的变化
-var observer = new MutationObserver(function(mutations) {
-  mutations.forEach(function(mutation) {
-    if (mutation.type === 'characterData') {
-      // 解析时间字符串，提取当前时间和总时间
-      var timeString = playerTime.textContent.trim();
-      var currentTime = parseInt(timeString.split(' / ')[0].split(':')[1]);
-      var totalTime = parseInt(timeString.split(' / ')[1].split(':')[1]);
+    // 配置观察选项:
+    var config = { childList: true, subtree: true };
 
-      // 计算当前播放进度的百分比
-      var progressPercentage = (currentTime / totalTime) * 100;
-
-      // 设置进度条的宽度
-      progress.style.width = progressPercentage + '%';
-    }
-  });
+    // 传入目标节点和观察选项
+    observer.observe(document.body, config);
 });
 
-// 配置观察选项
-var config = { characterData: true, subtree: true };
-
-// 传入目标节点和观察选项
-observer.observe(playerTime, config);
+function parseTime(timeString) {
+    var parts = timeString.split(':');
+    var minutes = parseInt(parts[0]);
+    var seconds = parseInt(parts[1]);
+    return minutes * 60 + seconds;
+}
