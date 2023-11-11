@@ -11,52 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     myhkScript.id = 'myhk';
     myhkScript.setAttribute('key', '168460845260');
     myhkScript.setAttribute('m', '1');
-    // 启用了歌词的在歌词出现后会隐藏掉底部栏
-    myhkScript.onload = function() {
-        // 定义一个函数，用于检查并处理footer的显示与隐藏
-        function checkFooterVisibility() {
-            var myhkplayerDiv = document.getElementById('myhkplayer');
-            var footerElement = document.getElementById('footer'); //要隐藏的元素id
-            var myhkLrc = document.getElementById('myhkLrc');
-            var ulElement = myhkLrc.querySelector('ul');
-
-            if (myhkplayerDiv && myhkplayerDiv.classList.contains('playing')) {
-                if (ulElement) {
-                    footerElement.style.display = 'none';
-                } else {
-                    footerElement.style.display = 'block';
-                }
-            } else {
-                footerElement.style.display = 'block';
-            }
-        }
-
-        // 初始化时先调用一次
-        checkFooterVisibility();
-
-        // 使用 MutationObserver 监听myhkplayer和myhkLrc的class变化
-        var observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.type === 'attributes' && (mutation.attributeName === 'class' || mutation.attributeName === 'style')) {
-                    checkFooterVisibility();
-                }
-            });
-        });
-
-        var myhkplayerDiv = document.getElementById('myhkplayer');
-        var myhkLrc = document.getElementById('myhkLrc');
-
-        var config = { attributes: true, attributeFilter: ['class', 'style'] };
-        observer.observe(myhkplayerDiv, config);
-        observer.observe(myhkLrc, config);
-    };
 
     document.head.appendChild(myhkScript);
-
-    // 在加载完成后，延迟一段时间再开始检查
-    setTimeout(function() {
-        myhkScript.onload();
-    }, 2000);
 });
 // 对系统的原生播放器通道设置播放器属性会显示歌曲名和歌曲封面，封面目前只测试对win系统生效
 document.addEventListener('DOMContentLoaded', function() {
@@ -243,13 +199,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // 传入目标节点和观察选项
     observer.observe(document.body, config);
 });
+
+
+// 隐藏明月浩空
 document.addEventListener('DOMContentLoaded', function() {
     var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
             if (mutation.type === 'childList') {
                 var myhkplayerDiv = document.getElementById('myhkplayer');
+                var myhkLrcDiv = document.getElementById('myhkLrc');
                 if (myhkplayerDiv) {
-                    myhkplayerDiv.style.cssText = 'visibility: hidden; background: rgba(113, 171, 175, 0.8);';
+                    myhkplayerDiv.style.cssText = 'visibility: hidden;';
+                }
+                if (myhkLrcDiv) {
+                    myhkLrcDiv.style.cssText = 'display: none;';
                 }
             }
         });
@@ -258,7 +221,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var config = { childList: true, subtree: true };
     observer.observe(document.body, config);
 });
-
 // 根据时长生成进度条
 document.addEventListener('DOMContentLoaded', function() {
     // 创建一个观察器实例
@@ -297,3 +259,38 @@ function parseTime(timeString) {
     var seconds = parseInt(parts[1]);
     return minutes * 60 + seconds;
 }
+// 获取歌词替换到任务栏
+document.addEventListener('DOMContentLoaded', function() {
+    var checkExist = setInterval(function() {
+        var myhkLrcDiv = document.getElementById('myhkLrc');
+        var powerDiv = document.querySelector('.power');
+        var foorerMusicDiv = document.querySelector('#foorer-music');
+
+        if (myhkLrcDiv) {
+            var observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        var myhknowElement = myhkLrcDiv.querySelector('.myhknow');
+                        var myhkplayer = document.getElementById('myhkplayer');
+
+                        if (myhknowElement && myhkplayer && myhkplayer.classList.contains('playing')) {
+                            foorerMusicDiv.innerHTML = '<i class="fa-regular fa-music-note"></i>' + myhknowElement.innerText + '<i class="fa-regular fa-music-note"></i>';
+                            foorerMusicDiv.style.display = 'block';
+                            powerDiv.style.display = 'none';
+                        }
+
+                        if (!myhknowElement || (myhkplayer && !myhkplayer.classList.contains('playing'))) {
+                            foorerMusicDiv.style.display = 'none';
+                            powerDiv.style.display = 'block';
+                        }
+                    }
+                });
+            });
+
+            var config = { childList: true, subtree: true };
+            observer.observe(myhkLrcDiv, config);
+
+            clearInterval(checkExist);
+        }
+    }, 100); // check every 100ms
+});
