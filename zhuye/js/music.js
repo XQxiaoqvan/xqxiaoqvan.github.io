@@ -259,7 +259,7 @@ function parseTime(timeString) {
     var seconds = parseInt(parts[1]);
     return minutes * 60 + seconds;
 }
-// 获取歌词替换到任务栏
+// 获取歌词替换到底部栏
 document.addEventListener('DOMContentLoaded', function() {
     var checkExist = setInterval(function() {
         var myhkplayer = document.getElementById('myhkplayer');
@@ -270,17 +270,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (myhkLrcDiv && myhkplayer) {
             var observer = new MutationObserver(function(mutations) {
                 mutations.forEach(function(mutation) {
-                    if ((mutation.type === 'childList' && mutation.target === myhkplayer) || (mutation.type === 'attributes' && mutation.target === myhkLrcDiv && mutation.attributeName === 'class')) {
+                    if (mutation.type === 'childList' || (mutation.type === 'attributes' && mutation.target === myhkplayer && mutation.attributeName === 'class')) {
                         var myhknowElement = myhkLrcDiv.querySelector('.myhknow');
-                        var myhkplayer = document.getElementById('myhkplayer');
 
-                        if (myhknowElement && myhkplayer && myhkplayer.classList.contains('playing')) {
-                            foorerMusicDiv.innerHTML = '<i class="fa-regular fa-music-note"></i>' + myhknowElement.innerText + '<i class="fa-regular fa-music-note"></i>';
+                        if (myhknowElement && myhkplayer.classList.contains('playing')) {
+                            foorerMusicDiv.innerHTML = '<i class="fa-brands fa-tiktok"></i> ' + myhknowElement.innerText + ' <i class="fa-brands fa-tiktok"></i>';
                             foorerMusicDiv.style.display = 'block';
                             powerDiv.style.display = 'none';
-                        }
-
-                        if (!myhknowElement || (myhkplayer && !myhkplayer.classList.contains('playing'))) {
+                        } else {
                             foorerMusicDiv.style.display = 'none';
                             powerDiv.style.display = 'block';
                         }
@@ -289,8 +286,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             var config = { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] };
-            observer.observe(myhkplayer, config);
             observer.observe(myhkLrcDiv, config);
+            observer.observe(myhkplayer, config);
 
             clearInterval(checkExist);
         }
