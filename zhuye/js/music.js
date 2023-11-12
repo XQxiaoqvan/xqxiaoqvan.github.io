@@ -262,14 +262,15 @@ function parseTime(timeString) {
 // 获取歌词替换到任务栏
 document.addEventListener('DOMContentLoaded', function() {
     var checkExist = setInterval(function() {
+        var myhkplayer = document.getElementById('myhkplayer');
         var myhkLrcDiv = document.getElementById('myhkLrc');
         var powerDiv = document.querySelector('.power');
         var foorerMusicDiv = document.querySelector('#foorer-music');
 
-        if (myhkLrcDiv) {
+        if (myhkLrcDiv && myhkplayer) {
             var observer = new MutationObserver(function(mutations) {
                 mutations.forEach(function(mutation) {
-                    if (mutation.type === 'childList') {
+                    if ((mutation.type === 'childList' && mutation.target === myhkplayer) || (mutation.type === 'attributes' && mutation.target === myhkLrcDiv && mutation.attributeName === 'class')) {
                         var myhknowElement = myhkLrcDiv.querySelector('.myhknow');
                         var myhkplayer = document.getElementById('myhkplayer');
 
@@ -287,7 +288,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
 
-            var config = { childList: true, subtree: true };
+            var config = { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] };
+            observer.observe(myhkplayer, config);
             observer.observe(myhkLrcDiv, config);
 
             clearInterval(checkExist);
