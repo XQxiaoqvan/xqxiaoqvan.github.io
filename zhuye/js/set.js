@@ -73,5 +73,5 @@ if (storedBackgroundLink) {
     setAndStoreBackgroundLink(storedBackgroundLink);
 } else {
     var randomIndex = Math.floor(Math.random() * 11); // 生成一个0到10之间的随机整数
-    setBackgroundLink(backgroundLinks, randomIndex, "../img/background" + randomIndex + ".webp");
+    setBackgroundLink(backgroundLinks, randomIndex, "../zhuye/img/background" + randomIndex + ".webp");
 }
