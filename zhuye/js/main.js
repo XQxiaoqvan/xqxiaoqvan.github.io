@@ -128,75 +128,59 @@ $('#hitokoto').click(function() {
 
 //获取天气
 //请前往高德开放平台 https://lbs.amap.com 获取Web服务key
-const originalApiKey = "0ea4f86a43f78a2972955f0973f05fb0"; // 填写高德地图key
-const qqApiKey = "FF4BZ-QFDRB-FEIUN-NNMEF-3SKIV-QDBE3"; // 填写腾讯地图key
-let wea = 0;
+const apiKey = "0ea4f86a43f78a2972955f0973f05fb0"; //填写高德地图key
+const ipApiUrl = `https://restapi.amap.com/v3/ip?key=${apiKey}`;
 
-const amapIpApiUrl = `https://restapi.amap.com/v3/ip?key=${originalApiKey}`;
-
-function getWeather(adcode) {
-    const weatherApiUrl = `https://restapi.amap.com/v3/weather/weatherInfo?city=${adcode}&key=${originalApiKey}`;
-
-    fetch(weatherApiUrl)
-        .then(response => response.json())
-        .then(data => {
-            const weatherInfo = data.lives[0];
-            const city = weatherInfo.city.replace("市", "");
-            const weather = weatherInfo.weather;
-            const temperature = weatherInfo.temperature + "℃";
-            const winddirection = weatherInfo.winddirection + "风";
-            const windpower = weatherInfo.windpower + "级";
-
-            // 更新页面元素
-            document.getElementById("city_text").textContent = city;
-            document.getElementById("wea_text").textContent = weather;
-            document.getElementById("tem_text").textContent = temperature;
-            document.getElementById("win_text").textContent = winddirection;
-            document.getElementById("win_speed").textContent = windpower;
-        })
-        .catch(error => console.error('获取天气信息时发生错误:', error));
-}
-
-function updateWeather() {
-    fetch(amapIpApiUrl)
+function getWeather() {
+    fetch(ipApiUrl)
         .then(response => response.json())
         .then(data => {
             const adcode = data.adcode;
-            getWeather(adcode);
-            iziToast.show({
-                timeout: 2000,
-                icon: "fa-solid fa-cloud-sun",
-                message: '实时天气已更新'
-            });
-        })
-        .catch(() => {
-            // 如果出现错误，尝试使用腾讯地图API获取adcode
-            const qqIpApiUrl = `https://apis.map.qq.com/ws/location/v1/ip?key=${qqApiKey}`;
-            fetch(qqIpApiUrl)
+            const weatherApiUrl = `https://restapi.amap.com/v3/weather/weatherInfo?city=${adcode}&key=${apiKey}`;
+
+            fetch(weatherApiUrl)
                 .then(response => response.json())
-                .then(qqData => {
-                    const qqAdcode = qqData.result.ad_info.adcode;
-                    getWeather(qqAdcode);
-                    iziToast.show({
-                        timeout: 2000,
-                        icon: "fa-solid fa-cloud-sun",
-                        message: '实时天气已更新'
-                    });
+                .then(data => {
+                    const weatherInfo = data.lives[0];
+                    const city = weatherInfo.city.replace("市", "");
+                    const weather = weatherInfo.weather;
+                    const temperature = weatherInfo.temperature + "℃";
+                    const winddirection = weatherInfo.winddirection + "风";
+                    const windpower = weatherInfo.windpower + "级";
+
+                    // 更新页面元素
+                    document.getElementById("city_text").textContent = city;
+                    document.getElementById("wea_text").textContent = weather;
+                    document.getElementById("tem_text").textContent = temperature;
+                    document.getElementById("win_text").textContent = winddirection;
+                    document.getElementById("win_speed").textContent = windpower;
                 })
-                .catch(qqError => console.error('获取adcode时发生错误:', qqError));
-        });
+                .catch(error => console.error('获取天气信息时发生错误,请不要使用国外ip，或者内网ip地址访问'));
+
+        })
+        .catch(error => console.error('获取adcode时发生错误：', error));
 }
 
+// 调用函数获取天气信息
+getWeather();
+
+
+let wea = 0;
 $('#upWeather').click(function() {
-    if (wea === 0) {
+    if (wea == 0) {
         wea = 1;
         let index = setInterval(function() {
             wea--;
-            if (wea === 0) {
+            if (wea == 0) {
                 clearInterval(index);
             }
         }, 60000);
-        updateWeather();
+        getWeather();
+        iziToast.show({
+            timeout: 2000,
+            icon: "fa-solid fa-cloud-sun",
+            message: '实时天气已更新'
+        });
     } else {
         iziToast.show({
             timeout: 1000,
@@ -205,7 +189,6 @@ $('#upWeather').click(function() {
         });
     }
 });
-
 
 //获取时间
 let t = setInterval(time, 1000);
