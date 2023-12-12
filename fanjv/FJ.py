@@ -112,6 +112,7 @@ html_content += """
         background: rgba(255, 255, 255, 0.7);
     }
 .footer {
+    position: fixed;
     width: 100%;
     padding: 10px 0;
     text-align: center;
@@ -138,9 +139,17 @@ html_content += """
 <script>
 window.onload = function() {
     var imageLinks = [
-        "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L3AveGlhb3F2YW5fMzY1L0VVcVptdUVQeWVWRmxTaVVWWG9hZ000QjBPaVRLcTNOdXlsUGVZQ2RTaEFWcUE_ZT1IeEVjdmY.webp",
-        "https://link.jscdn.cn/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L3AveGlhb3F2YW5fMzY1L0VZM2NGNU1wVUNSSm9qTkZYWGhJMkN3Ql9JUEowVDIwbDhudHZ4X2xtcG02aGc_ZT1PV1F2ck0.webp"
-    ];
+    "https://dlink.host/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VabnhPZXVLMkJKRW5EQkpGdC1Xd0lnQkU5cmZ0Mnhpd2NMNUpaRTQxQnk3OGc_ZT1KZ2lnWW8.webp",
+    "https://dlink.host/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VVcVptdUVQeWVWRmxTaVVWWG9hZ000QlN5Z0l2T1hpZ09yWkRpN3IweWkwTUE.webp",
+    "https://dlink.host/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VlTW1EWW9fREpSRGdfOGdDWEZ4NG1vQjhRRkFxMWRhOWF4TjRwazh2RnUxdGc.webp",
+    "https://dlink.host/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VRcXRKNGpLS0lWQ2h6NHFwZEZSQmFVQmllVHpzZDk4Qmc0R0tra3dJMEo4U1E_ZT1mU3ZhV0Y.webp",
+    "https://dlink.host/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VZclIyYTVhR1ZKQnYwQTBldU01bHNJQkh3VkdWQkRZUmlINmNtME1FMjYwSHc.webp",
+    "https://dlink.host/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VZX1VSVmx6Z081S25WbEg3enhNcENJQkhual9lM3M3bWhXMWtJcW90WTE0Q3c_ZT1hMGZmMjk.webp",
+    "https://dlink.host/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VYUjRQcVRnQnM5R250R2VQRWVndDRjQk5qa21IeUx3d3EyWE1yMm9OQzh3MVE_ZT01d213dFg.webp",
+    "https://dlink.host/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VmNGhMYXNNdU1WT2dxVWhWTVdZSTVRQkE5dnhrOHFmZjFLN2VRNUJJVFdxemc.webp",
+    "https://dlink.host/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VVOUMwbllCSGR0RnJfT1dmMnRJTjNvQlpOZ0xsakNzZnRQWjVJMTJvY3dubFE.webp",
+    "https://dlink.host/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VZM2NGNU1wVUNSSm9qTkZYWGhJMkN3Ql9JUEowVDIwbDhudHZ4X2xtcG02aGc.webp"
+];
 
     // 检查本地存储中是否已经保存了链接
     var cachedImageUrl = localStorage.getItem('backgroundImageUrl');
