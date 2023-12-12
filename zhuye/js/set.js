@@ -1,7 +1,7 @@
 var img = document.getElementById('logo-img');
 
 img.onerror = function() {
-    img.src = '..\zhuye\img\tx.jpg'; // 在这里替换为本地图片路径
+    img.src = 'zhuye/img/tx.jpg'; // 替换为正确的本地图片路径
 };
 
 
@@ -73,5 +73,5 @@ if (storedBackgroundLink) {
     setAndStoreBackgroundLink(storedBackgroundLink);
 } else {
     var randomIndex = Math.floor(Math.random() * 11); // 生成一个0到10之间的随机整数
-    setBackgroundLink(backgroundLinks, randomIndex, "../zhuye/img/background" + randomIndex + ".webp");
+    setBackgroundLink(backgroundLinks, randomIndex, "zhuye/img/background" + randomIndex + ".webp");
 }
