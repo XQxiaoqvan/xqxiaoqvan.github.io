@@ -137,7 +137,7 @@ html_content += """
 html_content += "</style>"
 html_content += """
 <script>
-window.onload = function() {
+(function() {
     var imageLinks = [
     "https://dlink.host/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VabnhPZXVLMkJKRW5EQkpGdC1Xd0lnQkU5cmZ0Mnhpd2NMNUpaRTQxQnk3OGc_ZT1KZ2lnWW8.webp",
     "https://dlink.host/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VVcVptdUVQeWVWRmxTaVVWWG9hZ000QlN5Z0l2T1hpZ09yWkRpN3IweWkwTUE.webp",
@@ -151,26 +151,24 @@ window.onload = function() {
     "https://dlink.host/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VZM2NGNU1wVUNSSm9qTkZYWGhJMkN3Ql9JUEowVDIwbDhudHZ4X2xtcG02aGc.webp"
 ];
 
-    // 检查本地存储中是否已经保存了链接
-    var cachedImageUrl = localStorage.getItem('backgroundImageUrl');
+    window.onload = function() {
+        var cachedImageUrl = localStorage.getItem('backgroundImageUrl');
 
-    if (cachedImageUrl) {
-        document.body.style.backgroundImage = "url('" + cachedImageUrl + "')";
-    } else {
-        var randomIndex = Math.floor(Math.random() * imageLinks.length);
-        var randomImageUrl = imageLinks[randomIndex];
+        if (cachedImageUrl) {
+            document.body.style.backgroundImage = "url('" + cachedImageUrl + "')";
+        } else {
+            var randomIndex = Math.floor(Math.random() * imageLinks.length);
+            var randomImageUrl = imageLinks[randomIndex];
 
-        // 保存链接到本地存储
-        localStorage.setItem('backgroundImageUrl', randomImageUrl);
+            localStorage.setItem('backgroundImageUrl', randomImageUrl);
 
-        document.body.style.backgroundImage = "url('" + randomImageUrl + "')";
-    }
+            document.body.style.backgroundImage = "url('" + randomImageUrl + "')";
+        }
 
-    // 设置背景图片裁剪为屏幕大小
-    document.body.style.backgroundSize = "cover";
-    document.body.style.backgroundAttachment = "fixed";
-
-};
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundAttachment = "fixed";
+    };
+})();
 </script>
 """
 html_content +='</head><body>'
