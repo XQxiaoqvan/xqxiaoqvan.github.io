@@ -33,7 +33,8 @@ function checkImage(url, success, failure) {
 function setBackgroundLink(links, defaultLink) {
     if (links.length === 0) {
         // 如果所有链接都已尝试过，就使用默认链接
-        setAndStoreBackgroundLink(defaultLink);
+        document.body.style.backgroundImage = "url('" + defaultLink + "')";
+        localStorage.setItem("backgroundLink", defaultLink);
     } else {
         // 随机选择一个链接
         var index = Math.floor(Math.random() * links.length);
@@ -44,7 +45,8 @@ function setBackgroundLink(links, defaultLink) {
             url,
             function(url) {
                 // 如果链接有效，就设置背景图片
-                setAndStoreBackgroundLink(url);
+                document.body.style.backgroundImage = "url('" + url + "')";
+                localStorage.setItem("backgroundLink", url);
             },
             function(url) {
                 // 如果链接无效，就从数组中移除它并尝试下一个链接
@@ -55,13 +57,6 @@ function setBackgroundLink(links, defaultLink) {
     }
 }
 
-// 创建一个函数来设置并存储背景链接
-function setAndStoreBackgroundLink(link) {
-    var bgElement = document.getElementById("bg");
-    bgElement.src = link;
-    localStorage.setItem("backgroundLink", link);
-}
-
 // 清除本地存储中的背景链接
 localStorage.removeItem("backgroundLink");
 
@@ -70,8 +65,9 @@ var storedBackgroundLink = localStorage.getItem("backgroundLink");
 
 // 如果本地存储中有背景链接，则使用它，否则尝试设置背景链接
 if (storedBackgroundLink) {
-    setAndStoreBackgroundLink(storedBackgroundLink);
+    document.body.style.backgroundImage = "url('" + storedBackgroundLink + "')";
 } else {
     var randomIndex = Math.floor(Math.random() * 11); // 生成一个0到10之间的随机整数
-    setBackgroundLink(backgroundLinks, randomIndex, "zhuye/img/background" + randomIndex + ".webp");
+    var defaultLink = "zhuye/img/background" + randomIndex + ".webp";
+    setBackgroundLink(backgroundLinks, defaultLink);
 }

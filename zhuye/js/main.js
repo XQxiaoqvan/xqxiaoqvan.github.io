@@ -127,16 +127,55 @@ $('#hitokoto').click(function() {
 });
 
 //获取天气
-//请前往高德开放平台 https://lbs.amap.com 获取Web服务key
-const apiKey = "0ea4f86a43f78a2972955f0973f05fb0"; //填写高德地图key
-const ipApiUrl = `https://restapi.amap.com/v3/ip?key=${apiKey}`;
+// 请前往高德开放平台 https://lbs.amap.com 获取Web服务key
+// 请前往腾讯位置服务 https://lbs.qq.com 获取WebService API服务key，注：需要分配key额度：ip定位
+const apiKeyAmap = "0ea4f86a43f78a2972955f0973f05fb0"; // 高德地图key
+const apiKeyTencent = "FF4BZ-QFDRB-FEIUN-NNMEF-3SKIV-QDBE3"; // 腾讯地图备用key
+
+const amapIpApiUrl = `https://restapi.amap.com/v3/ip?key=${apiKeyAmap}`;
+const tencentIpApiUrl = `https://apis.map.qq.com/ws/location/v1/ip?key=${apiKeyTencent}&output=jsonp`;
+
+function jsonp(url, callbackName) {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        const callback = callbackName || `jsonpCallback_${Date.now()}`;
+
+        window[callback] = data => {
+            delete window[callback];
+            document.body.removeChild(script);
+            resolve(data);
+        };
+
+        script.src = `${url}&callback=${callback}`;
+        script.onerror = reject;
+        document.body.appendChild(script);
+    });
+}
 
 function getWeather() {
-    fetch(ipApiUrl)
+    fetch(amapIpApiUrl)
         .then(response => response.json())
         .then(data => {
-            const adcode = data.adcode;
-            const weatherApiUrl = `https://restapi.amap.com/v3/weather/weatherInfo?city=${adcode}&key=${apiKey}`;
+            let adcode;
+
+            // 如果adcode为空数组或没有值，尝试备用API
+            if (!data.adcode || (Array.isArray(data.adcode) && data.adcode.length === 0)) {
+                console.error("获取adcode时返回错误值为空数组或者未定义，尝试备用API");
+                return jsonp(`${tencentIpApiUrl}&callback=jsonpCallback`);
+            }
+
+            adcode = data.adcode;
+
+            return Promise.resolve(adcode); // 继续处理原始API返回的数据
+        })
+        .then(adcode => {
+            // 如果备用API的adcode仍为空数组，输出错误信息并中止函数执行
+            if (!adcode || (Array.isArray(adcode) && adcode.length === 0)) {
+                console.error("备用原获取adcode时返回错误值为空数组");
+                return;
+            }
+
+            const weatherApiUrl = `https://restapi.amap.com/v3/weather/weatherInfo?city=${adcode}&key=${apiKeyAmap}`;
 
             fetch(weatherApiUrl)
                 .then(response => response.json())
@@ -156,14 +195,12 @@ function getWeather() {
                     document.getElementById("win_speed").textContent = windpower;
                 })
                 .catch(error => console.error('获取天气信息时发生错误,请不要使用国外ip，或者内网ip地址访问'));
-
         })
         .catch(error => console.error('获取adcode时发生错误：', error));
 }
 
 // 调用函数获取天气信息
 getWeather();
-
 
 let wea = 0;
 $('#upWeather').click(function() {
@@ -189,6 +226,43 @@ $('#upWeather').click(function() {
         });
     }
 });
+
+// JSONP 回调函数
+function jsonpCallback(data) {
+    // 处理从腾讯地图 API 返回的数据
+    const ad_info = data.result.ad_info;
+    if (ad_info && ad_info.adcode) {
+        const adcode = ad_info.adcode;
+        getWeatherByAdcode(adcode);
+    } else {
+        console.error("备用原获取adcode时返回错误值为空数组");
+    }
+}
+
+// 使用adcode获取天气信息
+function getWeatherByAdcode(adcode) {
+    const weatherApiUrl = `https://restapi.amap.com/v3/weather/weatherInfo?city=${adcode}&key=${apiKeyAmap}`;
+
+    fetch(weatherApiUrl)
+        .then(response => response.json())
+        .then(data => {
+            const weatherInfo = data.lives[0];
+            const city = weatherInfo.city.replace("市", "");
+            const weather = weatherInfo.weather;
+            const temperature = weatherInfo.temperature + "℃";
+            const winddirection = weatherInfo.winddirection + "风";
+            const windpower = weatherInfo.windpower + "级";
+
+            // 更新页面元素
+            document.getElementById("city_text").textContent = city;
+            document.getElementById("wea_text").textContent = weather;
+            document.getElementById("tem_text").textContent = temperature;
+            document.getElementById("win_text").textContent = winddirection;
+            document.getElementById("win_speed").textContent = windpower;
+        })
+        .catch(error => console.error('获取天气信息时发生错误,请不要使用国外ip，或者内网ip地址访问'));
+}
+
 
 //获取时间
 let t = setInterval(time, 1000);
