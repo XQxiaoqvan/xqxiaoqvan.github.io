@@ -1,0 +1,232 @@
+/* BY: xiaoqvan
+* 2024-1-1
+* Copyright © 2023 萌喵次元社版权所有
+*/
+
+
+/* 背景 */
+
+.background {
+    position: fixed;
+    /* 将背景元素固定在页面的顶部左侧，不会随着页面的滚动而移动。 */
+    top: 0;
+    /* 将背景元素的顶部与页面顶部对齐。 */
+    left: 0;
+    /* 将背景元素的左侧与页面左侧对齐。 */
+    width: 100%;
+    /* 将背景元素的宽度设置为页面宽度的100%。 */
+    height: 100%;
+    /* 将背景元素的高度设置为页面高度的100%。 */
+    z-index: -1;
+    /* 将背景元素的顶层堆叠顺序设置为-1，使其位于页面的底层，不会被其他元素遮挡。 */
+}
+
+.background img {
+    /* 将背景图片填充至包含块的全宽，同时保持图片的纵横比 */
+    object-fit: cover;
+    /* 图片宽度占满包含块的宽度 */
+    width: 100%;
+    /* 图片高度占满包含块的高度 */
+    height: 100%;
+}
+
+.overlay {
+    /* 设置一个空元素，用于覆盖在其他元素之上 */
+    content: "";
+    /* 设置元素的位置为绝对定位 */
+    position: absolute;
+    /* 设置元素的顶部距离父元素顶部为0 */
+    top: 0;
+    /* 设置元素的左侧距离父元素左侧为0 */
+    left: 0;
+    /* 设置元素的宽度为父元素的100% */
+    width: 100%;
+    /* 设置元素的高度为父元素的100% */
+    height: 100%;
+    /* 设置元素的背景色为半透明的黑色 */
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+/* 背景END */
+
+
+/* 登录 */
+
+.login-all {
+    margin-top: 10%;
+    /* 上边距为20% */
+    margin-left: 37%;
+    /* 左边距为5% */
+    margin-right: 37%;
+    /* 右边距为5% */
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    /* 透明灰色背景，最后一个值是透明度，0为完全透明，1为不透明 */
+    flex-direction: column;
+    /* 内容上下排列 */
+    border-radius: 10px;
+    /* 圆角 */
+    border: 2px solid #606060;
+    /* 描边 */
+    padding: 50px;
+}
+
+.reg-content h1,
+.login-content h1 {
+    margin-bottom: 0;
+}
+
+.reg-content p,
+.login-content p {
+    font-size: 15px;
+    color: gray;
+}
+
+.reg-tip,
+.login-tip {
+    margin-top: 0;
+}
+
+.login-footer {
+    margin-top: 20px;
+}
+
+.reg-tip-2 {
+    color: red!important;
+}
+
+.reg-username,
+.reg-password,
+.login-username,
+.login-password {
+    display: flex;
+    overflow: hidden;
+    /* 添加这行以确保图片不溢出容器 */
+    padding: 1px;
+    /* 添加内边距，根据需要调整 */
+}
+
+.reg-CAPTCHA {
+    border-bottom: 1px solid #606060;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reg-CAPTCHA input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 18px;
+    font-family: "Microsoft YaHei";
+    color: rgb(0, 0, 0);
+}
+
+.reg-form div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.reg-password input,
+.reg-username input,
+.login-password input,
+.login-username input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 18px;
+    font-family: "Microsoft YaHei";
+    color: rgb(0, 0, 0);
+    border-bottom: 1px solid #606060;
+}
+
+.login-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px
+}
+
+.login-button button {
+    background-color: rgb(249, 204, 177);
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-button button:hover {
+    background-color: rgb(213, 175, 152);
+}
+
+.reg-button,
+.login-button2,
+.reg-CAPTCHA-button {
+    border: none;
+    font-size: 16px;
+    background-color: #00000000;
+    color: rgb(0, 0, 255);
+    cursor: pointer;
+}
+
+.reg-button:hover,
+.login-button2:hover,
+.reg-CAPTCHA-button:hover {
+    text-decoration: underline;
+    /* 添加下划线效果 */
+}
+
+.login-footer {
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* 登录END */
+
+
+/* 底部栏 */
+
+.footer {
+    position: fixed;
+    width: 100%;
+    font-size: 15px;
+    text-align: center;
+    color: #ffffff;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-content {
+    margin-left: 10px;
+    text-align: left;
+}
+
+.footer-link a,
+.footer-content p {
+    margin: 5px;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-link a:hover {
+    text-decoration: underline;
+    /* 添加下划线效果 */
+}
+
+.footer-link {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+
+
+/* 底部栏END */
