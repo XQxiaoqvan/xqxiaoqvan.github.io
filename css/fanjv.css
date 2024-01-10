@@ -1,0 +1,112 @@
+.fanjv-main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    white-space: nowrap;
+    /* 不换行 */
+    overflow-x: scroll;
+    /* 保持为scroll */
+    overflow-y: hidden;
+    /* 隐藏纵向滚动条 */
+    width: 100%;
+    /* 确保宽度占满父容器 */
+}
+
+
+/* 自定义滚动条样式 */
+
+.fanjv-main::-webkit-scrollbar {
+    width: 15px;
+    /* 设置滚动条宽度 */
+    height: 5px;
+}
+
+.fanjv-main::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* 设置滚动条拖拽部分的颜色 */
+    border-radius: 6px;
+    /* 设置滚动条拖拽部分的圆角 */
+}
+
+.fanjv-main::-webkit-scrollbar-track {
+    background-color: #f1f1f100;
+    /* 设置滚动条背景颜色 */
+}
+
+.fanjv-top {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.fanjv-top-1 {
+    background-color: rgba(255, 255, 255, 0.687);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 5px;
+}
+
+.fanjv-all {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+
+.anime-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.anime-image {
+    width: 100px;
+    height: 135px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.fanjv-header h1 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.fanjv-scrq p {
+    margin: 0;
+    font-size: 15px;
+}
+
+.fanjv-times {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fanjv-times p {
+    margin: 0 3px;
+    font-size: 17px;
+}
+
+.anime-title {
+    width: 105px;
+    /* 设置文本显示的宽度 */
+    white-space: nowrap;
+    /* 禁止换行 */
+    overflow: hidden;
+    /* 超出部分隐藏 */
+    text-overflow: ellipsis;
+    /* 超出部分用省略号表示 */
+    font-size: 13px;
+}
+
+.day-container {
+    padding: 5px;
+}
