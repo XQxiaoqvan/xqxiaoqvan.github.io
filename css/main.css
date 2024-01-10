@@ -1,7 +1,7 @@
  /*
  * @Date: 2024-01-08 11:03:15
  * @LastEditors: XQxiaoqvan xiaoqvandd@qq.com
- * @LastEditTime: 2024-01-10 16:00:53
+ * @LastEditTime: 2024-01-10 17:59:13
  */
  /* 字体引入 */
  
@@ -194,7 +194,7 @@
  
  .fanjv {
      background-color: rgba(255, 255, 255, 0.687);
-     border-radius: 20px;
+     border-radius: 10px;
      width: 500px;
      /* 设置容器宽度 */
      overflow: hidden;

@@ -82,8 +82,8 @@ $(document).ready(function() {
 // 获取天气
 // 请前往高德开放平台 https://lbs.amap.com 获取Web服务key
 // 请前往腾讯位置服务 https://lbs.qq.com 获取WebService API服务key，注：需要分配key额度：ip定位
-const apiKeyAmap = "a85ead7fcdf3f91581bf9f9ea855d927"; // 高德地图key
-const apiKeyTencent = "TVRBZ-SX2KI-XJWGT-UIR6F-QZB62-VBBBP"; // 腾讯地图备用key
+const apiKeyAmap = "0ea4f86a43f78a2972955f0973f05fb0"; // 高德地图key
+const apiKeyTencent = "FF4BZ-QFDRB-FEIUN-NNMEF-3SKIV-QDBE3"; // 腾讯地图备用key
 
 const amapIpApiUrl = `https://restapi.amap.com/v3/ip?key=${apiKeyAmap}`;
 const tencentIpApiUrl = `https://apis.map.qq.com/ws/location/v1/ip?key=${apiKeyTencent}&output=jsonp`;
