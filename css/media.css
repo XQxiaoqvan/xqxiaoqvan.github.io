@@ -1,11 +1,14 @@
 /*
  * @Date: 2024-01-09 14:43:34
  * @LastEditors: XQxiaoqvan xiaoqvandd@qq.com
- * @LastEditTime: 2024-01-09 16:48:03
+ * @LastEditTime: 2024-01-12 16:26:52
  */
 
 
 /* 主体 */
+
+
+/* 手机适配 */
 
 @media only screen and (max-width: 800px) {
     html,
@@ -14,14 +17,16 @@
         height: 100%;
         margin: 0;
         padding: 0;
-        overflow: visible;
+        overflow: hidden;
     }
     .iziToast {
         width: 70%!important;
+        transition: width 0.3s ease;
     }
     .main-all {
         overflow: hidden;
         margin: 20px 0;
+        transition: margin 0.3s ease;
     }
     .main {
         display: flex;
@@ -29,36 +34,125 @@
         align-items: center;
         margin: 0 12px;
         height: 100%;
+        transition: margin 0.3s ease;
     }
     .relation {
         margin-top: 5px;
+        transition: margin-top 0.3s ease;
     }
     .main-2 {
         display: none;
+        transition: display 0.3s ease;
     }
     .main-3 {
         margin-top: 5px;
         margin-left: 0px;
+        transition: margin-top 0.3s ease, margin-left 0.3s ease;
     }
     .music-content {
         margin: 0 10px;
+        transition: margin 0.3s ease;
     }
     .weather {
         display: none;
+        transition: display 0.3s ease;
     }
     .made {
         display: none;
+        transition: display 0.3s ease;
     }
     footer {
         position: fixed;
+        transition: position 0.3s ease;
     }
 }
+
+
+/* 平板横屏适配 */
 
 @media only screen and (min-width: 800px) and (max-width: 1360px) {
     .main-2 {
         display: none;
+        transition: width 0.3s ease;
     }
     .main-3 {
         margin-left: 50px;
+        transition: width 0.3s ease;
+    }
+}
+
+
+/* 高度600-700设备适配 */
+
+@media only screen and (min-height: 600px) and (max-height: 700px) {
+    /* 主体 */
+    .main-all {
+        overflow: hidden;
+        margin: 100px 0;
+        transition: width 0.3s ease;
+    }
+    .main {
+        padding: 14px;
+    }
+}
+
+
+/* 高度600以下设备适配 */
+
+@media only screen and (max-height: 600px) {
+    /* 主体 */
+    .main-all {
+        overflow: hidden;
+        margin: 20px 0;
+        transition: width 0.3s ease;
+    }
+}
+
+@media only screen and (max-height: 500px) {
+    .main-all {
+        transform-origin: top;
+        /* 设置变换的原点在顶部 */
+        transform: scale(0.8);
+        width: 100%;
+        overflow: visible;
+    }
+}
+
+@media only screen and (max-height: 400px) {
+    .main-all {
+        transform-origin: top;
+        /* 设置变换的原点在顶部 */
+        transform: scale(0.7);
+        width: 100%;
+        overflow: visible;
+    }
+    .main-2 {
+        display: block;
+    }
+}
+
+
+/* 低高度设备适配 */
+
+@media only screen and (max-height: 300px) {
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        /* 防止滚动条出现 */
+    }
+    .main-all {
+        transform-origin: top;
+        /* 设置变换的原点在顶部 */
+        transform: scale(0.5);
+        width: 100%;
+        overflow: visible;
+    }
+    .main {
+        width: 100%;
+        margin: 0 0;
+    }
+    .main-2 {
+        display: block;
     }
 }
