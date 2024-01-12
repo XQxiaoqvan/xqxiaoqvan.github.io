@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-01-09 14:43:34
  * @LastEditors: XQxiaoqvan xiaoqvandd@qq.com
- * @LastEditTime: 2024-01-12 17:34:12
+ * @LastEditTime: 2024-01-12 22:05:25
  */
 
 
@@ -30,7 +30,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 100vh;
+        height: 100%;
         margin: 0;
     }
     .main-all {
@@ -57,6 +57,9 @@
     .main-2 {
         display: none;
         transition: display 0.3s ease;
+    }
+    .fanjv {
+        width: 100%;
     }
     .main-3 {
         display: none;
@@ -85,9 +88,12 @@
     }
 }
 
-@media only screen and (min-width: 500px) and (max-width: 800px) {
-    .main {
-        margin: 0 14%;
+
+/* 在小于420px的宽度下隐藏星期 */
+
+@media (max-width: 420px) {
+    #xq {
+        display: none;
     }
 }
 

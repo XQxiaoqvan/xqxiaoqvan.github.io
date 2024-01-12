@@ -1,7 +1,7 @@
  /*
  * @Date: 2024-01-08 11:03:15
  * @LastEditors: XQxiaoqvan xiaoqvandd@qq.com
- * @LastEditTime: 2024-01-12 17:32:41
+ * @LastEditTime: 2024-01-12 21:48:45
  */
  /* 字体引入 */
  
@@ -101,6 +101,8 @@
  .tx-all {
      width: 100%;
      height: auto;
+     transition: display 0.5s ease;
+     /* 添加过渡效果 */
  }
  /* 头像 */
  

@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-01-08 18:51:52
  * @LastEditors: XQxiaoqvan xiaoqvandd@qq.com
- * @LastEditTime: 2024-01-12 18:01:08
+ * @LastEditTime: 2024-01-12 22:10:06
  */
 
 //弹窗样式
@@ -289,16 +289,47 @@ $(document).ready(function() {
 
         if (!isTxAllHidden || !isMain2Hidden) {
             // 如果有一个不是隐藏状态，就隐藏所有
-            $(".tx-all, .main-2, .main-3").hide();
+            $(".tx-all, .main-2, .main-3").fadeOut();
             // 显示 main-3
-            $(".main-3").show();
+            $(".main-3").fadeIn();
         } else {
             // 如果都是隐藏状态，就隐藏 main-2 和 main-3，显示 tx-all
-            $(".main-2, .main-3").hide();
-            $(".tx-all").show();
+            $(".main-2, .main-3").slideUp();
+            $(".tx-all").slideDown();
         }
     });
 });
+// 应对实时变化的场景
+$(document).ready(function() {
+    // 初始页面加载时运行一次
+    updateLayout();
+
+    // 在窗口大小变化时运行
+    $(window).resize(function() {
+        updateLayout();
+    });
+});
+
+function updateLayout() {
+    var windowWidth = $(window).width();
+    var windowHeight = $(window).height();
+
+    if (windowWidth > 800) {
+        // 当页面宽度大于800时
+        $('.tx-all, .main-3').css('display', 'block');
+        if (windowWidth > 1360) {
+            // 大于1360px宽度的处理
+            $('.main-2').css('display', 'block');
+        } else {
+            // 小于1360px宽度的处理
+            $('.main-2').css('display', 'none');
+        }
+    } else {
+        // 小于800px宽度的处理
+        $('.main-2, .main-3').css('display', 'none');
+        $('.tx-all').css('display', 'block');
+    }
+}
 //控制台输出
 let styleTitle1 = `
 font-size: 20px;

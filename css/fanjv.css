@@ -11,6 +11,8 @@
     /* 隐藏纵向滚动条 */
     width: 100%;
     /* 确保宽度占满父容器 */
+    background-color: rgba(255, 255, 255, 0.847);
+    border-radius: 5px;
 }
 
 
@@ -41,7 +43,7 @@
 
 .fanjv-top-1 {
     background-color: rgba(255, 255, 255, 0.687);
-    border-radius: 20px;
+    border-radius: 0 0 20px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -109,4 +111,9 @@
 
 .day-container {
     padding: 5px;
+}
+
+.dqxq {
+    background-color: rgba(255, 255, 255, 0.847);
+    border-radius: 5px 5px 0 0;
 }

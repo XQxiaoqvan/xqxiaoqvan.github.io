@@ -1,7 +1,7 @@
 '''
 Date: 2024-01-10 16:43:15
 LastEditors: XQxiaoqvan xiaoqvandd@qq.com
-LastEditTime: 2024-01-10 17:18:07
+LastEditTime: 2024-01-12 22:12:52
 '''
 import datetime
 import requests
@@ -36,7 +36,7 @@ for bangumi_intro in data['bangumiList']:
     weekdays[air_day].append((anime_title, image_url, str(rating)))  # 将rating转换为字符串并添加到元组中
 
 # 开始构建HTML内容
-html_content = f"""<html>
+html_content = f"""<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,9 +58,9 @@ html_content = f"""<html>
 """
 
 # 星期标题
-day_names = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
+day_names = ["日", "一", "二", "三", "四", "五", "六"]
 for day_name in day_names:
-    html_content += f"<div><p class='today-header'>{day_name}</p></div>"
+    html_content += f"<div><p class='today-header'><span id='xq'>星期</span>{day_name}</p></div>"
 
 html_content += "</div><div class='fanjv-main'>"
 
