@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-01-08 18:51:52
  * @LastEditors: XQxiaoqvan xiaoqvandd@qq.com
- * @LastEditTime: 2024-01-12 15:45:28
+ * @LastEditTime: 2024-01-12 18:01:08
  */
 
 //弹窗样式
@@ -265,9 +265,40 @@ function getWeatherByAdcode(adcode) {
         }
     });
 }
+// 显示番剧
+$(document).ready(function() {
+    $('.fanjv-switchover').on('click', function() {
+        // 判断是否隐藏
+        if ($('.tx-all').is(':hidden') && $('.main-3').is(':hidden')) {
+            // 如果都是隐藏状态
+            $('.main-2, .main-3').hide();
+            $('.tx-all').show();
+        } else {
+            // 如果有一个不是隐藏状态
+            $('.tx-all, .main-3').hide();
+            $('.main-2').show();
+        }
+    });
+});
+// 显示音乐播放器等
+$(document).ready(function() {
+    $(".music-switchover").click(function() {
+        // 检测是否隐藏
+        var isTxAllHidden = $(".tx-all").is(":hidden");
+        var isMain2Hidden = $(".main-2").is(":hidden");
 
-
-
+        if (!isTxAllHidden || !isMain2Hidden) {
+            // 如果有一个不是隐藏状态，就隐藏所有
+            $(".tx-all, .main-2, .main-3").hide();
+            // 显示 main-3
+            $(".main-3").show();
+        } else {
+            // 如果都是隐藏状态，就隐藏 main-2 和 main-3，显示 tx-all
+            $(".main-2, .main-3").hide();
+            $(".tx-all").show();
+        }
+    });
+});
 //控制台输出
 let styleTitle1 = `
 font-size: 20px;

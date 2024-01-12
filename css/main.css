@@ -1,7 +1,7 @@
  /*
  * @Date: 2024-01-08 11:03:15
  * @LastEditors: XQxiaoqvan xiaoqvandd@qq.com
- * @LastEditTime: 2024-01-10 17:59:13
+ * @LastEditTime: 2024-01-12 17:32:41
  */
  /* 字体引入 */
  
@@ -374,6 +374,11 @@
  
  .weather-content {
      margin: 0 18px;
+ }
+ /* 移动页面按钮 */
+ 
+ .media-switchover {
+     display: none;
  }
  /* 底部 */
  
