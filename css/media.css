@@ -91,12 +91,6 @@
 
 /* 在小于420px的宽度下隐藏星期 */
 
-@media (max-width: 420px) {
-    #xq {
-        display: none;
-    }
-}
-
 @media (max-width: 410px) {
     .relation div {
         margin: 0;
@@ -106,10 +100,20 @@
     }
     .music-content h1 {
         font-size: 17px;
+        width: 200px;
+    }
+}
+
+@media (max-width: 390px) {
+    .music-content h1 {
+        font-size: 17px;
         width: 150px;
     }
     footer {
         font-size: 12px;
+    }
+    .fanjv-times div p {
+        font-size: 15px;
     }
 }
 
