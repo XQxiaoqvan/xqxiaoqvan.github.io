@@ -310,26 +310,50 @@ $(document).ready(function() {
     });
 });
 
+
 function updateLayout() {
     var windowWidth = $(window).width();
     var windowHeight = $(window).height();
 
     if (windowWidth > 800) {
-        // 当页面宽度大于800时
         $('.tx-all, .main-3').css('display', 'block');
-        if (windowWidth > 1360) {
-            // 大于1360px宽度的处理
+
+
+        if (windowWidth > 1000 && windowHeight < 500) {
             $('.main-2').css('display', 'block');
         } else {
-            // 小于1360px宽度的处理
-            $('.main-2').css('display', 'none');
+            if (windowWidth < 1000 && windowHeight < 500) {
+                $('.main-2').css('display', 'none');
+            } else {
+                $('.main-2').css('display', 'block');
+            }
+        }
+
+        if (windowWidth > 1360 && windowHeight > 500) {
+            $('.main-2').css('display', 'block');
+        } else {
+            if (windowWidth < 1360 && windowHeight > 500) {
+                $('.main-2').css('display', 'none');
+            } else {
+                if (windowWidth < 1000 && windowHeight < 500) {
+                    $('.main-2').css('display', 'block');
+                } else {
+                    $('.main-2').css('display', 'none');
+                }
+            }
+
         }
     } else {
-        // 小于800px宽度的处理
         $('.main-2, .main-3').css('display', 'none');
         $('.tx-all').css('display', 'block');
     }
 }
+
+
+
+
+
+
 //控制台输出
 let styleTitle1 = `
 font-size: 20px;

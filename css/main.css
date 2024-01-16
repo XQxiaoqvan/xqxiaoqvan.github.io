@@ -298,28 +298,20 @@
  
  .music-progress-bar {
      appearance: none;
-     width: 100%;
      height: 10px;
      border-radius: 10px;
-     /* 设置圆角半径，使其呈现胶囊形状 */
-     background: transparent;
-     /* 未填充的地方设置为透明 */
+     background: rgba(255, 255, 255, 0.582);
      overflow: hidden;
-     /* 隐藏溢出的部分，使其呈现胶囊形状 */
  }
  
  .music-progress-bar::-webkit-progress-value {
      background: linear-gradient(90deg, #0f0, #0ff);
-     /* 从左到右的彩色渐变 */
      border-radius: 10px;
-     /* 圆角半径与外层保持一致 */
  }
  
  .music-progress-bar::-webkit-progress-bar {
-     background-color: transparent;
-     /* 未填充的地方设置为透明 */
+     background-color: rgba(255, 255, 255, 0.582);
      border-radius: 10px;
-     /* 圆角半径与外层保持一致 */
  }
  
  .music-button {

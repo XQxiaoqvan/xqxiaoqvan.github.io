@@ -97,6 +97,22 @@
     }
 }
 
+@media (max-width: 410px) {
+    .relation div {
+        margin: 0;
+    }
+    .time-info {
+        margin: 0;
+    }
+    .music-content h1 {
+        font-size: 17px;
+        width: 150px;
+    }
+    footer {
+        font-size: 12px;
+    }
+}
+
 
 /* 平板横屏适配 */
 

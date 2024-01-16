@@ -2,36 +2,39 @@ name: Run Python Script
 
 on:
   workflow_dispatch:
-  
+
+  schedule:
+    - cron: "0 16 * * 1" # 每周星期一凌晨4点触发（北京时间）
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.11'
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.11"
 
-    - name: Install dependencies
-      run: |
-        pip install requests pytz
+      - name: Install dependencies
+        run: |
+          pip install requests pytz
 
-    - name: Run Python Script
-      run: |
-        python fanjv/FJ.py
+      - name: Run Python Script
+        run: |
+          python fanjv/FJ.py
 
-    - name: commit
-      run: |
-        git config --global user.email xiaoqvandd@qq.com
-        git config --global user.name XQxiaoqvan
-        git add .
-        git commit -m "更新番剧信息" -a
-        
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: commit
+        run: |
+          git config --global user.email xiaoqvandd@qq.com
+          git config --global user.name XQxiaoqvan
+          git add .
+          git commit -m "更新番剧信息" -a
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
