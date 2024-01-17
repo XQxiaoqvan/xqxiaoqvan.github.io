@@ -265,6 +265,7 @@ function getWeatherByAdcode(adcode) {
         }
     });
 }
+
 // 显示番剧
 $(document).ready(function() {
     $('.fanjv-switchover').on('click', function() {
@@ -280,6 +281,7 @@ $(document).ready(function() {
         }
     });
 });
+
 // 显示音乐播放器等
 $(document).ready(function() {
     $(".music-switchover").click(function() {
@@ -289,16 +291,19 @@ $(document).ready(function() {
 
         if (!isTxAllHidden || !isMain2Hidden) {
             // 如果有一个不是隐藏状态，就隐藏所有
-            $(".tx-all, .main-2, .main-3").fadeOut();
+            $(".tx-all, .main-2, .main-3").hide();
             // 显示 main-3
-            $(".main-3").fadeIn();
+            $(".main-3").show();
         } else {
             // 如果都是隐藏状态，就隐藏 main-2 和 main-3，显示 tx-all
-            $(".main-2, .main-3").slideUp();
-            $(".tx-all").slideDown();
+            $(".main-2, .main-3").hide();
+            $(".tx-all").show();
         }
     });
 });
+
+
+
 // 应对实时变化的场景
 $(document).ready(function() {
     // 初始页面加载时运行一次

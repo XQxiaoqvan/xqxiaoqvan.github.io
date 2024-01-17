@@ -99,21 +99,25 @@
         margin: 0;
     }
     .music-content h1 {
-        font-size: 17px;
+        font-size: 16px;
         width: 200px;
+    }
+    .fanjv-times p {
+        margin: 0 3px;
+        font-size: 15px;
     }
 }
 
 @media (max-width: 390px) {
     .music-content h1 {
-        font-size: 17px;
+        font-size: 15px;
         width: 150px;
     }
     footer {
         font-size: 12px;
     }
     .fanjv-times div p {
-        font-size: 15px;
+        font-size: 14px;
     }
 }
 

@@ -333,18 +333,37 @@
      box-sizing: border-box;
      background-color: rgba(255, 255, 255, 0.687);
      border-radius: 20px;
-     display: -webkit-box;
      -webkit-box-orient: vertical;
      overflow: hidden;
      -webkit-line-clamp: 2;
      padding: 15px;
      width: 100%;
      text-align: center;
-     /* 将文字内容居中显示 */
-     align-items: center;
-     justify-content: center;
      margin: 10px 0;
-     color: #000000;
+ }
+ 
+ .color-text {
+     text-align: center;
+     font-size: 15px;
+     /* 设置背景透明色 */
+     background-image: -webkit-linear-gradient(left, blue, #66ffff 10%, #cc00ff 20%, #CC00CC 30%, #CCCCFF 40%, #00FFFF 50%, #CCCCFF 60%, #CC00CC 70%, #CC00FF 80%, #66FFFF 90%, blue 100%);
+     /* 改变background-size是为了让动画动起来 */
+     background-size: 200% 100%;
+     /* 按照文字拆分背景 */
+     -webkit-background-clip: text;
+     /* 将字体设置成透明色 */
+     -webkit-text-fill-color: transparent;
+     /* 启用动画 */
+     animation: masked-animation 4s linear infinite;
+ }
+ 
+ @keyframes masked-animation {
+     0% {
+         background-position: 0 0;
+     }
+     100% {
+         background-position: -100% 0;
+     }
  }
  /* 播放器END */
  /* 天气 */
