@@ -2,9 +2,9 @@ name: Run Python
 
 on:
   workflow_dispatch:
-
-  schedule:
-    - cron: "0 16 * * 1" # 每周星期一凌晨4点触发（北京时间）
+# 关闭自动执行
+# schedule:
+#   - cron: "0 16 * * 1" # 每周星期一凌晨4点触发（北京时间）
 
 jobs:
   build:
