@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: "0 16 * * 1" # 每周星期一凌晨4点触发（北京时间）
+    - cron: "0 16 1 * *" # 每月1号凌晨4点触发（北京时间）
 
 jobs:
   build:
