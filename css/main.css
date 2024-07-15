@@ -103,17 +103,19 @@
      height: auto;
      transition: display 0.5s ease;
      /* 添加过渡效果 */
+     
  }
  /* 头像 */
  
  .tx {
-     background-color: rgba(255, 255, 255, 0.687);
+    background-color: rgba(255, 255, 255, 0.9);
      border-radius: 20px;
      display: flex;
      justify-content: center;
      align-items: center;
      flex-direction: column;
      margin: 0 0px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.557);
  }
  
  .tx img {
@@ -141,11 +143,12 @@
  /* 一言 */
  
  .hitokoto-all {
-     background-color: rgba(255, 255, 255, 0.687);
+    background-color: rgba(255, 255, 255, 0.9);
      border-radius: 20px;
      height: 100%;
      padding: 20px;
      margin: 10px 0;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.557);
  }
  
  .hitokoto-text {
@@ -168,11 +171,12 @@
      display: flex;
      justify-content: center;
      align-items: center;
-     background-color: rgba(255, 255, 255, 0.687);
+     background-color: rgba(255, 255, 255, 0.9);
      border-radius: 10px;
      width: 50px;
      height: 50px;
      margin: 0 10px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.557);
  }
  
  .relation i {
@@ -192,6 +196,7 @@
      flex-direction: column;
      flex-wrap: wrap;
      margin: 0 60px;
+     
  }
  
  .fanjv {
@@ -201,6 +206,7 @@
      /* 设置容器宽度 */
      overflow: hidden;
      /* 隐藏溢出内容 */
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.557);
  }
  /* 第三屏 */
  
@@ -214,11 +220,12 @@
      box-sizing: border-box;
      width: 100%;
      padding: 14px;
-     background-color: rgba(255, 255, 255, 0.687);
+     background-color: rgba(255, 255, 255, 0.9);
      border-radius: 20px;
      display: flex;
      flex-direction: column;
      align-items: center;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.557);
  }
  
  .time-text {
@@ -237,7 +244,7 @@
  
  .music-bfq {
      box-sizing: border-box;
-     background-color: rgba(255, 255, 255, 0.687);
+     background-color: rgba(255, 255, 255, 0.9);
      border-radius: 20px;
      display: flex;
      justify-content: space-around;
@@ -246,6 +253,7 @@
      width: 100%;
      margin-top: 10px;
      flex-wrap: nowrap;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.557);
  }
  
  .music-bfq img {
@@ -300,8 +308,9 @@
      appearance: none;
      height: 10px;
      border-radius: 10px;
-     background: rgba(255, 255, 255, 0.582);
+     background-color: rgb(170, 170, 170);
      overflow: hidden;
+     box-shadow: 0 0 5px rgba(0, 0, 0, 0.557);
  }
  
  .music-progress-bar::-webkit-progress-value {
@@ -310,7 +319,7 @@
  }
  
  .music-progress-bar::-webkit-progress-bar {
-     background-color: rgba(255, 255, 255, 0.582);
+    background-color: rgb(243, 243, 243);
      border-radius: 10px;
  }
  
@@ -331,7 +340,7 @@
  
  .lyric {
      box-sizing: border-box;
-     background-color: rgba(255, 255, 255, 0.687);
+     background-color: rgba(255, 255, 255, 0.9);
      border-radius: 20px;
      -webkit-box-orient: vertical;
      overflow: hidden;
@@ -340,6 +349,7 @@
      width: 100%;
      text-align: center;
      margin: 10px 0;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.557);
  }
  
  .color-text {
@@ -370,13 +380,14 @@
  
  .weather {
      box-sizing: border-box;
-     background-color: rgba(255, 255, 255, 0.687);
+     background-color: rgba(255, 255, 255, 0.9);
      border-radius: 20px;
      display: flex;
      flex-direction: row;
      align-items: center;
      padding: 15px;
      width: 100%;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.557);
  }
  
  .weather-icon img {
