@@ -47,7 +47,7 @@ html_content = f"""<html lang="zh-CN">
         <div class='fanjv-top'>
             <div class='fanjv-top-1'>
                 <div class='fanjv-header'>
-                    <h1>每日番剧</h1>
+                    <h1>番剧</h1>
                 </div>
                 <div class='fanjv-scrq'>
                     <p>更新时间：{china_time}</p>
