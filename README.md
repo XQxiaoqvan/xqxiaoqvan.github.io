@@ -46,7 +46,7 @@ npm install
 ### 设置好 vite.config.ts
 
 > 如果你要部署在 https://`<USERNAME>`.github.io/ 上，你可以省略 `base` 使其默认为 ‘/’。  
-> 如果你要部署在 https://`<USERNAME>`.github.io/`<REPO>`/ 上，例如你的仓库地址为 https://github.com/`<USERNAME>`/`<REPO>`，那么请设置 `base` 为 ‘/`<REPO>`/’。  
+> 如果你要部署在 https://`<USERNAME>`.github.io/`<REPO>`/ 上，例如你的仓库地址为 https://github.com/ `<USERNAME>` / `<REPO>` ，那么请设置 `base` 为 ‘/`<REPO>`/’。  
 > REPO 代表仓库名，USERNAME 为你的 github 用户名
 
 ```ts
