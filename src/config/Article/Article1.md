@@ -8,7 +8,7 @@ tags:
   - 标签3
 summary: 文章摘要
 link: https://www.baidu.com
-image: "src/assets/img/background2.webp"
+image: "https://dlink.host/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VVcVptdUVQeWVWRmxTaVVWWG9hZ000QlN5Z0l2T1hpZ09yWkRpN3IweWkwTUE.webp"
 ---
 
 文章内容...

@@ -2,7 +2,10 @@
 const Config = {
   // 【背景图片】
   // 填写背景图片链接
-  backgroundImg: "src/assets/img/background4.webp",
+  // 外部图片使用
+  // backgroundImg: "https://dlink.host/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VabnhPZXVLMkJKRW5EQkpGdC1Xd0lnQkU5cmZ0Mnhpd2NMNUpaRTQxQnk3OGc_ZT1KZ2lnWW8.webp",
+  // 内部导入图片使用
+  backgroundImg: () => import("@/assets/img/background4.webp"),
 
   // 【音乐播放器】
   // 填写明月浩空音乐播放器ID

@@ -1,9 +1,19 @@
-<!-- 背景 -->
 <script setup lang="ts" name="background">
-import { ref, watch } from 'vue';
+import { ref, watch, computed } from 'vue';
 import Config from '@/config/Config';
 
 const isNightMode = ref(false);
+
+// 新增处理异步加载图片的逻辑
+const backgroundImg = ref('');
+
+if (typeof Config.backgroundImg === 'string') {
+    backgroundImg.value = Config.backgroundImg;
+} else if (typeof Config.backgroundImg === 'function') {
+    Config.backgroundImg().then((module) => {
+        backgroundImg.value = module.default;
+    });
+}
 
 watch(isNightMode, (newVal) => {
     const overlay = document.querySelector('.overlay');
@@ -20,12 +30,12 @@ document.addEventListener('toggleNightMode', (event: Event) => {
 
 <template>
     <div class="background">
-        <img :src="Config.backgroundImg" alt="background">
+        <!-- 修改 :src 为 backgroundImg -->
+        <img :src="backgroundImg" alt="background">
         <!-- 下方为背景灰色蒙版 -->
         <div class="overlay"></div>
     </div>
 </template>
-
 
 <style scoped>
 .background {
