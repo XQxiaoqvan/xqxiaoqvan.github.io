@@ -75,6 +75,7 @@ npm run deploy
 ### 开启 pages 功能
 
 在 github 仓库进入 Settings → Pages → 选择 gh-pages 分支作为 github 仓库的 Pages 分支
+![Pages](/screenshots/image1.png)
 
 ## 修改页面内容
 
