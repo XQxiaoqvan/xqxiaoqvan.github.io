@@ -36,9 +36,9 @@ xiaoqvan 自写个人主页
 
 ```bash
 # 克隆仓库
-git clone https://github.com/xiaoqvan/xiaoqvan.git
+git clone https://github.com/XQxiaoqvan/xqxiaoqvan.github.io.git
 # 进入
-cd xiaoqvan
+cd xqxiaoqvan.github.io
 # 安装依赖
 npm install
 ```
