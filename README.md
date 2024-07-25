@@ -12,7 +12,7 @@
 
 ## 主页界面
 
-xiaoqvan 自写个人主页
+xiaoqvan 的个人主页
 ![主页](/screenshots/image.png)
 
 ### 预览
