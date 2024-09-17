@@ -1,0 +1,1 @@
+import{F as e}from"./Footer-D3uaFkJ7.js";import{d as o,a as t,c as a,j as r,_ as c}from"./index-BdCp2O-t.js";const s=o({name:"Footer"}),_=o({...s,setup(n){return(p,f)=>(t(),a("footer",null,[r(e)]))}}),l=c(_,[["__scopeId","data-v-5fbc0af5"]]);export{l as F};

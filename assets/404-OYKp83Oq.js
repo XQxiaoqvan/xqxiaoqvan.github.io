@@ -1,1 +1,0 @@
-import{_ as t,a as c,c as o,b as e}from"./index-DAwmu5Zt.js";const s={},n=e("h1",null,"404",-1),_=e("h2",null,"你在访问一个不存在的页面",-1),a=[n,_];function r(l,d){return c(),o("div",null,a)}const f=t(s,[["render",r]]);export{f as default};
