@@ -109,11 +109,11 @@ onUnmounted(() => {
 
 .topbar_tag {
     display: flex;
+    gap: 10px;
 }
 
 /* 标签背景 */
 .tag {
-    margin: 0 2px;
     background-color: rgba(192, 192, 192, 0.2);
     padding: 10px;
     border-radius: 6px;

@@ -46,6 +46,8 @@ const showBeian = computed(() => beian_enabled)
     bottom: 0;
     width: 100%;
     margin-top: 50px;
+    position: fixed;
+
 }
 
 .footer-text {
@@ -76,12 +78,12 @@ const showBeian = computed(() => beian_enabled)
     margin: 0 10px;
 }
 
-footer a {
+.footer_div a {
     text-decoration: none;
     color: #000;
 }
 
-footer a:hover {
+.footer_div a:hover {
     background-color: #ffffffac;
     text-decoration: none;
     border-radius: 5px;

@@ -114,7 +114,7 @@ export function useMusic() {
                             const currentTipsContent = myhkTips.textContent || '';
 
                             if (currentTipsContent !== initialTipsContent) {
-                                toast(`<i class="fa-solid fa-circle-exclamation"></i> ${currentTipsContent}`, {
+                                toast(`<div style="display: flex;flex-direction: row;align-items: center;"><i class="fa-solid fa-circle-exclamation" style="font-size: 20px;"></i><span style="margin-left: 10px;">${currentTipsContent}</span></div>`, {
                                     autoClose: 1000,
                                 } as ToastOptions);
 

@@ -32,10 +32,9 @@ const Config = {
       { href: "https://qm.qq.com/q/xwIReHzTLG", title: "添加QQ", icon: "fa-qq" },
       { href: "https://space.bilibili.com/171896697", title: "bilibili", icon: "fa-bilibili" },
       { href: "https://github.com/XQxiaoqvan", title: "前往GitHub", icon: "fa-github" },
-      { href: "https://twitter.com/xiao_qvan668", title: "前往x-twitter", icon: "fa-x-twitter" },
+      { href: "https://twitter.com/xiao_qvan668", title: "前往x-twitter", icon: "fa-twitter" },
       { href: "https://t.me/xiaoqvan", title: "前往Telegram", icon: "fa-telegram" },
     ],
-
 
   // 【底部栏】
   // icp备案号(没有可为空)

@@ -17,7 +17,7 @@ function copyToClipboard(text: string) {
 
 <template>
     <div class="game_list">
-        <div v-for="(game, index) in Config.games" :key="index" class="game_box">
+        <div v-for="(game, index) in Config.games" :key="index" class="game_box Frosted_glass Theme_colors">
             <div class="info">
                 <div class="avatar">
                     <img :src="game.avatar" alt="tx">
@@ -67,8 +67,6 @@ function copyToClipboard(text: string) {
     flex-direction: column;
     border-radius: 10px;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.68);
-    box-shadow: 0px 0px 10px 5px rgba(104, 104, 104, 0.591);
     width: 320px;
 }
 

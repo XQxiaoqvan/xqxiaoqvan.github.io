@@ -29,7 +29,7 @@ import Footer from "@/components/Footer/Footer.vue";
 
 .container {
   display: flex;
-  width: 130%;
+  width: 120%;
   box-sizing: border-box;
   flex-direction: column;
   align-items: center;
