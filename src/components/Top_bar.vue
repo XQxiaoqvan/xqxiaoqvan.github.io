@@ -101,15 +101,20 @@ onUnmounted(() => {
 }
 
 .topbar_title h1 {
-    font-size: 20px;
-    color: #35ddff;
-    text-shadow: 0 0 10px rgba(65, 204, 255, 0.8);
-    max-width: 100px;
-}
+    text-align: center;
+    font-size: 25px;
+    /* 渐变背景 */
+    background-image: linear-gradient(90deg, #2af5e4 10%, #009efd 100%);
 
-.topbar_tag {
-    display: flex;
-    gap: 10px;
+    /* 文字阴影 */
+    text-shadow: 1px 1px 5px rgba(0, 229, 255, 0.632);
+
+    /* 确保文字不透明度为100%，避免与背景混合 */
+    color: transparent;
+
+    /* 使用背景作为文字颜色 */
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 
 /* 标签背景 */
