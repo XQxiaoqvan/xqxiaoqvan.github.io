@@ -167,4 +167,9 @@ onUnmounted(() => {
     background-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0 0 5px 5px rgba(104, 104, 104, 0.16);
 }
+
+.topbar_tag {
+    display: flex;
+    gap: 5px;
+}
 </style>
