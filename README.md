@@ -45,13 +45,21 @@ npm install
 
 ### 设置好 vite.config.ts
 
-> 如果你要部署在 https://`<USERNAME>`.github.io/ 上，你可以省略 `base` 使其默认为 ‘/’。  
-> 如果你要部署在 https://`<USERNAME>`.github.io/`<REPO>`/ 上，例如你的仓库地址为 https://github.com/ `<USERNAME>` / `<REPO>` ，那么请设置 `base` 为 ‘/`<REPO>`/’。  
-> REPO 代表仓库名，USERNAME 为你的 github 用户名
+- [ ] `settings > Actions > General`，拉到页面底部，在 `Workflow permissions` 下，勾选 `Read and write permissions`，并点击保存按钮
+
+- [ ] `settings > Pages`, 在 `Build and deployment` 中，`Source` 选择 `Deploy from a branch`, `Branch` 选择 `gh-pages`，并点击保存按钮
+  (首次创建可能没有 `gh-pages`分支，你可以先完成上面的设置后，推送一次构建后的代码到`gh-pages`分支，等待 `github actions` 自动部署完成)
+
+- [ ] 修改 `vite.config.ts` 中的 `base` 选项：
+  - 如果你准备发布到 `https://<USERNAME>.github.io/` ，你可以省略这一步，因为 `base` 默认就是 `"/"` 。
+  - 如果你准备发布到 `https://<USERNAME>.github.io/<REPO>/` ，也就是说你的仓库地址是 `https://github.com/<USERNAME>/<REPO>` ，则将 `base` 设置为 `"/<REPO>/"`。
+  - REPO 代表仓库名，USERNAME 为你的 github 用户名
+
+如需要自定义域名，请查看 [Github Pages 文档](https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages)
 
 ```ts
 export default defineConfig({
-  base: "/", // 设置这行
+  base: "/", // <<设置这行
   plugins: [
     // ... 其他代码 ...
   ],
