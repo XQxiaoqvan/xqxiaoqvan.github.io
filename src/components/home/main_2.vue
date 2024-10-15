@@ -113,7 +113,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             class='day-container'>
                             <div class='anime-list'>
                                 <div v-for="anime in day.items" :key="anime.id" class='anime-item'>
-                                    <img :src="anime.images?.large" alt="anime.name" class='anime-image' />
+                                    <img :src="anime.images?.large ? anime.images.large : 'https://dummyimage.com/350x600/cccccc/ffffff&text=%E6%97%A0%E5%B0%81%E9%9D%A2'"
+                                        alt="anime.name" class='anime-image' />
                                     <p class='anime-title'>{{ anime.name_cn || anime.name }}</p>
                                 </div>
                             </div>
