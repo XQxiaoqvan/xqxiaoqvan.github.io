@@ -1,38 +1,23 @@
-<script setup lang="ts" name="App">
-import { RouterView } from 'vue-router'
-import background from "./components/background.vue";
+<script setup name="App">
 import topbar from "./components/Top_bar.vue";
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <!-- 背景 -->
-  <background />
-  <div class="main">
-    <div class="container">
-      <!-- 顶部栏 -->
-      <topbar />
-    </div>
-    <!-- 路由显示位置 -->
-    <RouterView v-slot="{ Component }">
-      <keep-alive>
-        <component :is="Component" v-show="true"></component>
-      </keep-alive>
-    </RouterView>
+  <div class="topbar">
+    <topbar />
   </div>
+  <RouterView v-slot="{ Component }">
+    <keep-alive>
+      <component :is="Component" v-show="true"></component>
+    </keep-alive>
+  </RouterView>
 </template>
 
 <style scoped>
-.main {
+.topbar {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.container {
-  display: flex;
-  width: 80%;
-  box-sizing: border-box;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
 </style>

@@ -1,9 +1,11 @@
-<script setup lang="ts" name="AnimeView">
+<script setup name="AnimeView">
 import Anime from '@/components/Anime.vue'
 import Footer from "@/components/Footer_bar.vue";
+import background from "@/components/formerbg.vue"
 </script>
 
 <template>
-    <Anime />
-    <Footer />
+  <background />
+  <Anime />
+  <Footer />
 </template>

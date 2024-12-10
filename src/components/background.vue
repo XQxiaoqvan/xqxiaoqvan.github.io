@@ -1,83 +1,78 @@
-<script setup lang="ts" name="background">
-import { ref, watch, computed } from 'vue';
-import Config from '@/config/Config';
+<script setup name="background">
+import backgroundImg from '@/assets/img/background3.webp'
+import { init } from "@/assets/js/rain";
+import { ref, onMounted } from 'vue';
 
-const isNightMode = ref(false);
+const canvasStyle = ref({
+  position: 'absolute',
+  width: "100%",
+  height: "100%",
+  zIndex: "-1",
+  left: "0",
+  top: "0",
+  overflow: "hidden",
+});
 
-// 新增处理异步加载图片的逻辑
-const backgroundImg = ref('');
+const ctx = ref({});
 
-if (typeof Config.backgroundImg === 'string') {
-    backgroundImg.value = Config.backgroundImg;
-} else if (typeof Config.backgroundImg === 'function') {
-    Config.backgroundImg().then((module) => {
-        backgroundImg.value = module.default;
-    });
+onMounted(() => {
+  initCanvas();
+});
+
+function initCanvas() {
+  const canvas = document.querySelector("#canvas");
+  ctx.value = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  init(ctx.value);
 }
 
-watch(isNightMode, (newVal) => {
-    const overlay = document.querySelector('.overlay');
-    if (overlay) {
-        overlay.classList.toggle('night-mode', newVal);
-    }
-});
-
-document.addEventListener('toggleNightMode', (event: Event) => {
-    const customEvent = event as CustomEvent;
-    isNightMode.value = customEvent.detail;
-});
 </script>
 
 <template>
-    <div class="background">
-        <!-- 修改 :src 为 backgroundImg -->
-        <img :src="backgroundImg" alt="background">
-        <!-- 下方为背景灰色蒙版 -->
-        <div class="overlay"></div>
-    </div>
+
+  <div class="background">
+    <canvas id="canvas" :style="canvasStyle" />
+    <img :src="backgroundImg" alt="background">
+    <!-- 下方为背景灰色蒙版 -->
+    <div class="overlay"></div>
+  </div>
 </template>
 
 <style scoped>
+.home,
+.background,
+.overlay {
+  user-select: none;
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+}
+
 .background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
+  width: 100%;
+  height: 100%;
+  position: sticky;
 }
 
 .background img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -3;
+  position: sticky;
 }
 
 .overlay {
-    position: absolute;
-    top: 0;
-    z-index: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0);
-    transition: background-color 0.5s ease, transform 0.5s ease;
-}
-
-.overlay.night-mode {
-    background-color: rgba(0, 0, 0, 0.4);
-    ;
-    transform: scale(1.1);
-    animation: expand 0.5s ease-out;
-}
-
-@keyframes expand {
-    from {
-        transform: scale(1);
-    }
-
-    to {
-        transform: scale(1.1);
-    }
+  background-color: rgba(0, 0, 0, 0.28);
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 </style>

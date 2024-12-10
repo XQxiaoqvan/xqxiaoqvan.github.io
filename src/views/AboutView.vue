@@ -1,11 +1,11 @@
 <!-- 关于 -->
-<script setup lang="ts" name="AboutView">
+<script setup name="AboutView">
 
 </script>
 
 
 <template>
-    <div>关于</div>
+  <div>关于</div>
 </template>
 
 
