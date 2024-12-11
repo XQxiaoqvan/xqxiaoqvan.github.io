@@ -1,6 +1,12 @@
 # xiaoqvan 的个人主页
 
-这里是 xiaoqvan 的个人主页模板，修改为使用 vue3 + vite + ts 构建
+这里是 xiaoqvan 的个人主页，使用 vue3 + vite + JS 构建
+
+[以前的 html + css + js 版本](https://github.com/xiaoqvan/xiaoqvan.github.io/tree/main)
+
+## 访问量
+
+![:xiaoqvan.github.io](https://count.getloli.com/@xiaoqvan.github.io?name=xiaoqvan.github.io&theme=rule34&padding=9&offset=0&align=top&scale=1&pixelated=1&darkmode=auto)
 
 ## 未来
 
@@ -22,8 +28,6 @@ xiaoqvan 的个人主页
 ## 功能
 
 - [x] Hitokotod 一言
-- [x] 日期及时间
-- [ ] 实时天气(预计取消)
 - [x] 音乐播放器
 - [ ] 移动端适配
 - [x] 动漫番剧
@@ -36,14 +40,14 @@ xiaoqvan 的个人主页
 
 ```bash
 # 克隆仓库
-git clone https://github.com/XQxiaoqvan/xqxiaoqvan.github.io.git
+git clone https://github.com/xiaoqvan/xiaoqvan.github.io.git
 # 进入
-cd xqxiaoqvan.github.io
+cd xiaoqvan.github.io
 # 安装依赖
 npm install
 ```
 
-### 设置好 vite.config.ts
+### 设置 vite.config.js
 
 - [ ] `settings > Actions > General`，拉到页面底部，在 `Workflow permissions` 下，勾选 `Read and write permissions`，并点击保存按钮
 
@@ -69,15 +73,11 @@ export default defineConfig({
 
 ### 构建
 
-构建并上传到 gh-pages 分支
-
 ```bash
 # 预览
 npm run dev
 # 构建
 npm run build
-# 上传到 gh-pages 分支
-npm run deploy
 ```
 
 ### 开启 pages 功能
@@ -89,10 +89,10 @@ npm run deploy
 
 ### 社交链接
 
-在 `src/config/Config.ts` 中的 `socialLinks` 可以自定义社交链接。
+在 `src/config/Config.js` 中的 `socialLinks` 可以自定义社交链接。
 更换 `href` 为自己的链接
 
-```ts
+```js
   socialLinks: [
       { href: "#", title: "添加QQ", icon: "fa-qq" },
       { href: "#", title: "bilibili", icon: "fa-bilibili" },
@@ -104,10 +104,10 @@ npm run deploy
 
 ### 音乐
 
-> 本项目采用了基于 `明月浩空` 的音乐播放器，可使用明月浩空的后台管理页面自定义歌单列表
-> 请在 `src/config/Config.ts` 中的 `playerId` 中填写你自己的明月浩空播放器 id
+> 本项目采用了基于免费使用的 `明月浩空` 的音乐播放器，可使用明月浩空的后台管理页面自定义歌单列表
+> 请在 `src/config/Config.js` 中的 `playerId` 中填写你自己的明月浩空播放器 id
 
-```ts
+```js
   // 【音乐播放器】
   // 填写明月浩空音乐播放器ID
   // 没有前往myhkw.cn获取，登录后在侧边栏的`主页`点击`我的播放器`获取ID
@@ -128,7 +128,7 @@ npm run deploy
 
 ### 游戏页面
 
-在 `src/config/Config.ts` 中的 `games` 中自定义游戏信息
+在 `src/config/Config.js` 中的 `games` 中自定义游戏信息
 
 ```ts
   games: [
@@ -180,4 +180,4 @@ npm run deploy
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=XQxiaoqvan/xqxiaoqvan.github.io&type=Date)](https://star-history.com/#XQxiaoqvan/xqxiaoqvan.github.io&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=xiaoqvan/xiaoqvan.github.io&type=Date)](https://star-history.com/#xiaoqvan/xiaoqvan.github.io&Date)
