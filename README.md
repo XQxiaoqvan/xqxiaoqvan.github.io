@@ -2,8 +2,6 @@
 
 这里是 xiaoqvan 的个人主页，使用 vue3 + vite + JS 构建
 
-[以前的 html + css + js 版本](https://github.com/xiaoqvan/xiaoqvan.github.io/tree/main)
-
 ## 访问量
 
 ![:xiaoqvan.github.io](https://count.getloli.com/@xiaoqvan.github.io?name=xiaoqvan.github.io&theme=rule34&padding=9&offset=0&align=top&scale=1&pixelated=1&darkmode=auto)
@@ -47,14 +45,14 @@ cd xiaoqvan.github.io
 npm install
 ```
 
-### 设置 vite.config.js
+### 自动部署
 
-- [ ] `settings > Actions > General`，拉到页面底部，在 `Workflow permissions` 下，勾选 `Read and write permissions`，并点击保存按钮
+- `settings > Actions > General`，拉到页面底部，在 `Workflow permissions` 下，勾选 `Read and write permissions`，并点击保存按钮
 
-- [ ] `settings > Pages`, 在 `Build and deployment` 中，`Source` 选择 `Deploy from a branch`, `Branch` 选择 `gh-pages`，并点击保存按钮
-      (首次创建可能没有 `gh-pages`分支，你可以先完成上面的设置后，推送一次构建后的代码到`gh-pages`分支，等待 `github actions` 自动部署完成)
+- `settings > Pages`, 在 `Build and deployment` 中，`Source` 选择 `Deploy from a branch`, `Branch` 选择 `gh-pages`，并点击保存按钮
+  (首次创建可能没有 `gh-pages`分支，你可以先完成上面的设置后，推送一次构建后的代码到`gh-pages`分支，等待 `github actions` 自动部署完成)
 
-- [ ] 修改 `vite.config.ts` 中的 `base` 选项：
+- 修改 `vite.config.ts` 中的 `base` 选项：
   - 如果你准备发布到 `https://<USERNAME>.github.io/` ，你可以省略这一步，因为 `base` 默认就是 `"/"` 。
   - 如果你准备发布到 `https://<USERNAME>.github.io/<REPO>/` ，也就是说你的仓库地址是 `https://github.com/<USERNAME>/<REPO>` ，则将 `base` 设置为 `"/<REPO>/"`。
   - REPO 代表仓库名，USERNAME 为你的 github 用户名
