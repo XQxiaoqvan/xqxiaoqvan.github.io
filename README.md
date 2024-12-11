@@ -45,6 +45,15 @@ cd xiaoqvan.github.io
 npm install
 ```
 
+### 构建
+
+```bash
+# 预览
+npm run dev
+# 构建
+npm run build
+```
+
 ### 自动部署
 
 - `settings > Actions > General`，拉到页面底部，在 `Workflow permissions` 下，勾选 `Read and write permissions`，并点击保存按钮
@@ -59,7 +68,7 @@ npm install
 
 如需要自定义域名，请查看 [Github Pages 文档](https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages)
 
-```ts
+```js
 export default defineConfig({
   base: '/', // <<设置这行
   plugins: [
@@ -67,15 +76,6 @@ export default defineConfig({
   ],
   // ... 其他代码 ...
 })
-```
-
-### 构建
-
-```bash
-# 预览
-npm run dev
-# 构建
-npm run build
 ```
 
 ### 开启 pages 功能
