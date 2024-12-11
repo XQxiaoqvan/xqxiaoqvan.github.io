@@ -17,7 +17,7 @@ import Config from '@/config/Config';
         <!-- 社交链接 -->
         <div class="info__social">
           <div v-for="link in Config.socialLinks" :key="link.href">
-            <a :href="link.href" :title="link.title"><i :class="`fa-brands ${link.icon}`"></i></a>
+            <a :href="link.href" :title="link.title" target="_blank"><i :class="`fa-brands ${link.icon}`"></i></a>
           </div>
         </div>
       </div>

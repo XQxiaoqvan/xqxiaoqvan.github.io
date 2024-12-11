@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <template>
   <div class="main-2">
     <!-- 番剧 -->
-    <div class="fanjv Theme_colors Frosted_glass">
+    <div class="fanjv">
       <div id="fanjv" class="fanjv-timeshow">
         <div class='fanjv-all' id='fanjv-python'>
           <div class='fanjv-top'>
@@ -138,6 +138,9 @@ document.addEventListener('DOMContentLoaded', function () {
   width: 100%;
   flex-direction: column;
   flex-wrap: wrap;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.557);
 
 }
 
@@ -145,7 +148,6 @@ document.addEventListener('DOMContentLoaded', function () {
   border-radius: 10px;
   width: 100%;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.557);
 }
 
 .fanjv-main {
@@ -157,7 +159,6 @@ document.addEventListener('DOMContentLoaded', function () {
   overflow-x: scroll;
   overflow-y: hidden;
   width: 100%;
-  background-color: var(--theme-bg-color);
   border-radius: 5px;
 }
 
@@ -170,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 
 .fanjv-main::-webkit-scrollbar-thumb {
-  background-color: #888;
+  background-color: #585858;
   border-radius: 6px;
 }
 
@@ -185,7 +186,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 .fanjv-top-1 {
   /* 定义背景颜色变量 */
-  background-color: var(--theme-bg-color);
   border-radius: 0 0 7px 7px;
   display: flex;
   align-items: center;
@@ -257,7 +257,6 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 
 .dqxq {
-  background-color: var(--theme-bg-color) !important;
   border-radius: 5px 5px 0 0 !important;
   box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.557) !important;
 }
@@ -265,12 +264,11 @@ document.addEventListener('DOMContentLoaded', function () {
 .fanjv-scrq-1 {
   text-decoration: none;
   padding: 2px 5px;
-  color: #000;
+  color: #fff;
 }
 
 .fanjv-scrq-1:hover {
   text-decoration: underline;
-  background-color: var(--theme-bg-color);
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.557);
 }
@@ -280,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 
 .today-header:hover {
-  background-color: var(--theme-bg-color);
+
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.557);
 }

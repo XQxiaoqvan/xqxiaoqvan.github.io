@@ -3,6 +3,7 @@ import background from "@/components/background.vue";
 import anime from "@/components/home/main_2.vue";
 import getHitokoto from "@/assets/js/hitokoto";
 import { ref, onMounted } from "vue";
+import Config from '@/config/Config';
 
 const hitokoto = ref({
   hitokoto: "权酱是个大吃货",
@@ -26,25 +27,19 @@ onMounted(() => {
           <img src="../assets/img/tx.png" alt="">
         </div>
         <div class="info">
-          <p class="name">xiaoqvan</p>
-          <p class="bio">欢迎来到我的主页</p>
+          <p class="name">{{ Config.name }}</p>
+          <p class="bio">{{ Config.introduction }}</p>
         </div>
       </div>
-
+      <!-- 社交链接 -->
       <div class="social">
-        <div class="social-item">
-          <i class="fa-brands fa-github"></i>
-        </div>
-        <div class="social-item">
-          <i class="fa-brands fa-bilibili"></i>
-        </div>
-        <div class="social-item">
-          <i class="fa-brands fa-weixin"></i>
-        </div>
-        <div class="social-item">
-          <i class="fa-brands fa-twitter"></i>
+        <div v-for="link in Config.socialLinks" :key="link.href" class="social-item">
+          <a class="no-link" :href="link.href" :title="link.title" target="_blank">
+            <i :class="`fa-brands ${link.icon}`"></i>
+          </a>
         </div>
       </div>
+      <!-- 一言 -->
       <div class="hitokoto">
         <p class="hitokoto-text">{{ hitokoto.hitokoto }}</p>
         <div class="hitokoto-from">-「 <span>{{ hitokoto.creator }}</span> 」</div>
@@ -52,6 +47,10 @@ onMounted(() => {
       <div class="anime">
         <anime />
       </div>
+    </div>
+    <div class="main-tile">
+      <h1 class="hitokoto-text">{{ hitokoto.hitokoto }}</h1>
+      <h2 class="hitokoto-from">-「 <span>{{ hitokoto.creator }}</span> 」</h2>
     </div>
   </div>
 </template>
@@ -67,6 +66,7 @@ onMounted(() => {
 .main {
   width: 100%;
   height: 100%;
+  display: flex;
 
   .card {
     position: absolute;
@@ -86,8 +86,6 @@ onMounted(() => {
     display: flex;
     gap: 20px;
     border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    background: rgba(255, 255, 255, 0.2);
 
     .me-avatar {
       width: 100px;
@@ -97,9 +95,11 @@ onMounted(() => {
       padding: 10px;
 
       img {
+        user-select: none;
         width: 100%;
         height: 100%;
         border-radius: 50%;
+        box-shadow: 0 0 10px 0 rgba(104, 104, 104, 0.2);
       }
     }
 
@@ -125,8 +125,6 @@ onMounted(() => {
   .hitokoto {
     padding: 10px;
     border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    background: rgba(255, 255, 255, 0.2);
     color: #fff;
     height: 60px;
     display: flex;
@@ -152,8 +150,6 @@ onMounted(() => {
     display: flex;
     padding: 10px;
     border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    background: rgba(255, 255, 255, 0.2);
     color: #fff;
 
     .social-item {
@@ -166,8 +162,12 @@ onMounted(() => {
       background: rgba(255, 255, 255, 0.2);
       margin: 0 10px;
       font-size: 20px;
-      color: #fff;
+      color: var(--home-font-color);
       cursor: pointer;
+
+      a {
+        color: var(--home-font-color);
+      }
 
       &:hover {
         background: rgba(255, 255, 255, 0.5);
@@ -180,6 +180,21 @@ onMounted(() => {
 
   .anime {
     box-sizing: border-box;
+  }
+}
+
+.main-tile {
+  position: absolute;
+  top: 350px;
+  left: 800px;
+  color: #fff;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .hitokoto-from {
+    text-align: right;
   }
 }
 </style>
