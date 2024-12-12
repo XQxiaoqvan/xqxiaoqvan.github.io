@@ -1,5 +1,4 @@
 import { onMounted, ref, onUnmounted } from 'vue'
-import { showToast } from '@/utils/toast'
 
 function parseTime(timeStr) {
   const [minutes, seconds] = timeStr.split(':').map(Number)
@@ -117,7 +116,6 @@ export function useMusic() {
                 const currentTipsContent = myhkTips.textContent || ''
 
                 if (currentTipsContent !== initialTipsContent) {
-                  showToast(currentTipsContent)
                   initialTipsContent = currentTipsContent
                 }
               }

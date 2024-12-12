@@ -6,7 +6,7 @@ import { ref, onMounted } from 'vue';
 const canvasStyle = ref({
   position: 'absolute',
   width: "100%",
-  height: "100%",
+  height: "100vh",
   zIndex: "-1",
   left: "0",
   top: "0",
@@ -54,13 +54,13 @@ function initCanvas() {
 
 .background {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: sticky;
 }
 
 .background img {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   object-fit: cover;
   z-index: -3;
   position: sticky;
@@ -69,7 +69,7 @@ function initCanvas() {
 .overlay {
   background-color: rgba(0, 0, 0, 0.28);
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: -2;
   position: absolute;
   left: 0;

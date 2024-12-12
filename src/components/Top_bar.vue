@@ -8,7 +8,7 @@ import Music from "@/components/home/Music.vue";
 const { title } = Config;
 const route = useRoute();
 
-const isHome = computed(() => route.name === 'home');
+const isHome = computed(() => route.name === 'home' || route.path === '/');
 </script>
 
 

@@ -1,6 +1,5 @@
 <script setup name="music">
 import { useMusic } from '@/assets/js/music';
-import { showToast } from '@/utils/toast';
 
 const { albumArt, lyricText } = useMusic();
 
@@ -12,7 +11,8 @@ function handlePauseButtonClick() {
     document.querySelector(".fa-play")?.setAttribute("style", "display: inline-block");
     document.querySelector(".fa-pause")?.setAttribute("style", "display: none");
   } else {
-    showToast('等待播放器加载');
+    console.log('等待播放器加载');
+
   }
 }
 
@@ -24,7 +24,7 @@ function handleNextButtonClick() {
     document.querySelector(".fa-play")?.setAttribute("style", "display: none");
     document.querySelector(".fa-pause")?.setAttribute("style", "display: inline-block");
   } else {
-    showToast('等待播放器加载');
+    console.log('等待播放器加载');
   }
 }
 
@@ -44,7 +44,8 @@ function handlePrevButtonClick() {
     document.querySelector(".fa-play")?.setAttribute("style", "display: none");
     document.querySelector(".fa-pause")?.setAttribute("style", "display: inline-block");
   } else {
-    showToast('等待播放器加载');
+    console.log('等待播放器加载');
+
   }
 }
 

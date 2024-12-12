@@ -5,6 +5,6 @@ export default async function getHitokoto() {
     const { data } = await axios.get('https://v1.hitokoto.cn')
     return data
   } catch (error) {
-    throw new Error('获取一言失败')
+    throw new Error(`获取一言失败: ${error.message}`)
   }
 }
