@@ -170,7 +170,6 @@ export default defineConfig({
 - [typeit](https://github.com/alexmacarthur/typeit)
 - [Vue-router](https://router.vuejs.org/zh/)
 - [Vue DevTools](https://devtools-next.vuejs.org/)
-- [Vue3toastify](https://vue3-toastify.netlify.app/)
 
 ## API
 
