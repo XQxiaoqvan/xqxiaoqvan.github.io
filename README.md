@@ -167,6 +167,7 @@ export default defineConfig({
 - [Vue](https://cn.vuejs.org/)
 - [Vite](https://vitejs.cn/vite3-cn/)
 - [Pinia](https://pinia.vuejs.org/zh/)
+- [typeit](https://github.com/alexmacarthur/typeit)
 - [Vue-router](https://router.vuejs.org/zh/)
 - [Vue DevTools](https://devtools-next.vuejs.org/)
 - [Vue3toastify](https://vue3-toastify.netlify.app/)

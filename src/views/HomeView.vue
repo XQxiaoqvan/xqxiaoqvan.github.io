@@ -2,9 +2,11 @@
 import background from "@/components/background.vue";
 import anime from "@/components/home/main_2.vue";
 import getHitokoto from "@/assets/js/hitokoto";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import Config from '@/config/Config';
+import typeit from "@/components/typeit.vue";
 
+const componentKey = ref(0);
 const hitokoto = ref({
   hitokoto: "权酱是个大吃货",
   creator: "xiaoqvan",
@@ -15,7 +17,9 @@ onMounted(() => {
     hitokoto.value = res;
   });
 });
-
+watch(hitokoto, () => {
+  componentKey.value++;
+});
 </script>
 
 <template>
@@ -49,7 +53,9 @@ onMounted(() => {
       </div>
     </div>
     <div class="main-tile">
-      <h1 class="hitokoto-text">{{ hitokoto.hitokoto }}</h1>
+      <h1 class="hitokoto-text">
+        <typeit :key="componentKey" :text="hitokoto.hitokoto" />
+      </h1>
       <h2 class="hitokoto-from">-「 <span>{{ hitokoto.creator }}</span> 」</h2>
     </div>
   </div>
@@ -196,5 +202,6 @@ onMounted(() => {
   .hitokoto-from {
     text-align: right;
   }
+
 }
 </style>
