@@ -1,1 +1,0 @@
-import{_ as r,c as t,b as n,a as o}from"./main-BbWDfxGi.js";const s={};function a(c,e){return o(),t("div",null,e[0]||(e[0]=[n("h1",null,"404",-1),n("h2",null,"你在访问一个不存在的页面",-1)]))}const _=r(s,[["render",a]]);export{_ as default};
