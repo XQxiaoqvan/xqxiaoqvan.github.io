@@ -87,10 +87,10 @@ export default defineConfig({
 
 ### 社交链接
 
-在 `src/config/info.js` 中的 `socialLinks` 可以自定义社交链接。
+在 `src/config/Config.js` 中的 `socialLinks` 可以自定义社交链接。
 更换 `href` 为自己的链接
 
-```ts
+```js
   socialLinks: [
       { href: "#", title: "添加QQ", icon: "fa-qq" },
       { href: "#", title: "bilibili", icon: "fa-bilibili" },
@@ -103,9 +103,14 @@ export default defineConfig({
 ### 音乐
 
 > 本项目采用了基于免费使用的 `明月浩空` 的音乐播放器，可使用明月浩空的后台管理页面自定义歌单列表
-> 请在 `src/config/Config.ts` 中的 `playerId` 中填写你自己的明月浩空播放器 id
+> 请在 `src/config/Config.js` 中的 `playerId` 中填写你自己的明月浩空播放器 id
 
-```ts
+```js
+  // 【音乐播放器】
+  // 填写明月浩空音乐播放器ID
+  // 没有前往myhkw.cn获取，登录后在侧边栏的`主页`点击`我的播放器`获取ID
+  // 侧边栏`歌单管理`→`我的全部歌单`→`新建歌单`可定义歌曲
+  // 侧边栏`播放器管理`→`全部设置`设置你的域名授权和添加刚刚新建立的歌单
   playerId: "#############",
 ```
 
@@ -121,7 +126,7 @@ export default defineConfig({
 
 ### 游戏页面
 
-在 `src/config/Games.ts` 中的 `games` 中自定义游戏信息
+在 `src/config/Config.js` 中的 `games` 中自定义游戏信息
 
 ```ts
   games: [

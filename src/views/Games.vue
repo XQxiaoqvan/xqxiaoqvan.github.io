@@ -1,6 +1,6 @@
 <script setup name="GamesView">
 import Footer from "@/components/Footer_bar.vue";
-import Config from '@/config/Config';
+import { games } from '@/config/Games';
 import background from "@/components/formerbg.vue"
 function copyToClipboard(text) {
   navigator.clipboard.writeText(text).then(() => {
@@ -16,7 +16,7 @@ function copyToClipboard(text) {
   <div class="box">
     <div class="box1">
       <div class="game_list">
-        <div v-for="(game, index) in Config.games" :key="index" class="game_box Frosted_glass Theme_colors">
+        <div v-for="(game, index) in games.games" :key="index" class="game_box Frosted_glass Theme_colors">
           <div class="info">
             <div class="avatar">
               <img :src="game.avatar" alt="tx">

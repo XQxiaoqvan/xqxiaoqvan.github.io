@@ -1,11 +1,11 @@
 <script name="Article_list">
-import { ref } from 'vue';
+
 </script>
 
 <template>
   <div class="content__right">
     <!-- 遍历文章列表 -->
-    <div v-for="(article, index) in articles" :key="index" class="article Theme_colors Frosted_glass">
+    <!-- <div v-for="(article, index) in articles" :key="index" class="article Theme_colors Frosted_glass">
       <div class="article1">
         <div class="">
           <h1>{{ article.title }}</h1>
@@ -34,7 +34,7 @@ import { ref } from 'vue';
       <a class="article_img" :href="article.link">
         <img :src="article.image" alt="文章图片" />
       </a>
-    </div>
+    </div> -->
   </div>
 </template>
 

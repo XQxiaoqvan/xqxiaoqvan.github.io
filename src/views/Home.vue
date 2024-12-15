@@ -3,8 +3,12 @@ import background from "@/components/background.vue";
 import anime from "@/components/home/main_2.vue";
 import getHitokoto from "@/assets/js/hitokoto";
 import { ref, onMounted, watch } from "vue";
-import Config from '@/config/Config';
+import { me } from '@/config/info';
 import typeit from "@/components/typeit.vue";
+import { Footer } from '@/config/Footer'
+
+const { icp, footername, footerlink, beian_enabled, beian_link, beian_imgSrc, beian_text } = Footer
+
 
 const componentKey = ref(0);
 const hitokoto = ref({
@@ -31,13 +35,13 @@ watch(hitokoto, () => {
           <img src="../assets/img/tx.png" alt="">
         </div>
         <div class="info">
-          <p class="name">{{ Config.name }}</p>
-          <p class="bio">{{ Config.introduction }}</p>
+          <p class="name">{{ me.name }}</p>
+          <p class="bio">{{ me.introduction }}</p>
         </div>
       </div>
       <!-- 社交链接 -->
       <div class="social">
-        <div v-for="link in Config.socialLinks" :key="link.href" class="social-item">
+        <div v-for="link in me.socialLinks" :key="link.href" class="social-item">
           <a class="no-link" :href="link.href" :title="link.title" target="_blank">
             <i :class="`fa-brands ${link.icon}`"></i>
           </a>
@@ -58,6 +62,30 @@ watch(hitokoto, () => {
       </h1>
       <h2 class="hitokoto-from">-「 <span>{{ hitokoto.creator }}</span> 」</h2>
     </div>
+  </div>
+  <div>
+    <footer>
+      <div class="footer-content">
+        <!-- 版权信息 -->
+        <span id="power">Copyright&nbsp;&copy;
+          {{ currentYear }}
+          <a v-if="showFooterName && footername.toLowerCase() !== 'xiaoqvan'" :href="footerlink" id="power-text">{{
+            footername }}</a>
+        </span>
+        <!-- 网站模板作者信息 -->
+        <span class="made" id="made">&nbsp;&amp;&nbsp;Made&nbsp;by&nbsp;<a rel="noopener"
+            href="https://github.com/XQxiaoqvan/xqxiaoqvan.github.io" target="_blank">xiaoqvan</a></span>
+        <!-- 备案信息 -->
+        <span v-if="icp">&nbsp;&amp;&nbsp;</span>
+        <a v-if="icp && icp.trim() !== ''" rel="noopener" href="https://beian.miit.gov.cn" id="beian" target="_blank">{{
+          icp }}</a>
+        <!-- 公安备案 -->
+        <span v-if="showBeian">&nbsp;&amp;&nbsp;<a :href="beian_link" target="_blank">
+            <img style="width: 20px; height: 20px; transform: translateY(+3px);" :src="beian_imgSrc" alt="beian">
+            <span>{{ beian_text }}</span>
+          </a></span>
+      </div>
+    </footer>
   </div>
 </template>
 

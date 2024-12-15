@@ -5,32 +5,32 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: () => import('../views/HomeView.vue'),
+      component: () => import('../views/Home.vue'),
     },
     {
       path: '/home',
       name: 'home',
-      component: () => import('../views/HomeView.vue'),
+      component: () => import('../views/Home.vue'),
     },
     {
       path: '/article',
       name: 'article',
-      component: () => import('../views/ArticleView.vue'),
+      component: () => import('../views/Article.vue'),
     },
     {
       path: '/games',
       name: 'games',
-      component: () => import('../views/GamesView.vue'),
+      component: () => import('../views/Games.vue'),
     },
     {
       path: '/anime',
       name: 'anime',
-      component: () => import('../views/AnimeView.vue'),
+      component: () => import('../views/Anime.vue'),
     },
     {
       path: '/about',
       name: 'about',
-      component: () => import('../views/AboutView.vue'),
+      component: () => import('../views/About.vue'),
     },
     {
       path: '/:pathMatch(.*)*', // 捕获所有未定义路径

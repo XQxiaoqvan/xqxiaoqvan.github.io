@@ -2,7 +2,6 @@
 <!-- api接口：Bangumi -->
 <script setup name="anime">
 import { onMounted, reactive } from 'vue';
-import { CalendarDay } from '@/assets/js/anime';
 import { fetchCalendarData } from '@/assets/js/anime';
 
 const calendarData = reactive([]);

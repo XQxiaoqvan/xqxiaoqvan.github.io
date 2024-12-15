@@ -1,5 +1,5 @@
 <script setup name="Article_info">
-import Config from '@/config/Config';
+import { me } from '@/config/info';
 </script>
 <template>
   <!-- 左边信息 -->
@@ -7,16 +7,16 @@ import Config from '@/config/Config';
     <!-- 博客信息 -->
     <div class="info Theme_colors">
       <!-- 头像 -->
-      <img :src="Config.avatarUrl" alt="头像" />
+      <img :src="me.avatar" alt="头像" />
       <div class="info_name">
-        <h1>{{ Config.blog }}</h1>
+        <h1>xiaoqvan</h1>
         <!-- 简介 -->
         <div class="info__desc">
-          <p v-html="Config.blogDescription"></p>
+          <p>没有开发完成的博客</p>
         </div>
         <!-- 社交链接 -->
         <div class="info__social">
-          <div v-for="link in Config.socialLinks" :key="link.href">
+          <div v-for="link in me.socialLinks" :key="link.href">
             <a :href="link.href" :title="link.title" target="_blank"><i :class="`fa-brands ${link.icon}`"></i></a>
           </div>
         </div>

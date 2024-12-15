@@ -1,38 +1,23 @@
 <script setup name="formerbg">
-import { ref, watch, computed } from 'vue';
-import Config from '@/config/Config';
+import { config } from '@/config/Config';
 
-const isNightMode = ref(false);
+// 动态导入本地静态资源
+const images = import.meta.glob('@/assets/img/*', { eager: true });
+let backgroundImg = config.backgroundImg;
 
-// 新增处理异步加载图片的逻辑
-const backgroundImg = ref('');
-
-if (typeof Config.backgroundImg === 'string') {
-  backgroundImg.value = Config.backgroundImg;
-} else if (typeof Config.backgroundImg === 'function') {
-  Config.backgroundImg().then((module) => {
-    backgroundImg.value = module.default;
-  });
+// 检查是否是外部 URL 或本地路径
+if (!/^(https?:|\/\/)/.test(backgroundImg)) {
+  const matchedImg = Object.entries(images).find(([path]) =>
+    path.includes(backgroundImg.replace('src/assets/img/', ''))
+  );
+  backgroundImg = matchedImg ? matchedImg[1].default : '';
 }
-
-watch(isNightMode, (newVal) => {
-  const overlay = document.querySelector('.overlay');
-  if (overlay) {
-    overlay.classList.toggle('night-mode', newVal);
-  }
-});
-
-document.addEventListener('toggleNightMode', (event) => {
-  const customEvent = event;
-  isNightMode.value = customEvent.detail;
-});
 </script>
 
 <template>
   <div class="background">
-    <!-- 修改 :src 为 backgroundImg -->
-    <img :src="backgroundImg" alt="background">
-    <!-- 下方为背景灰色蒙版 -->
+    <!-- 使用动态解析的路径 -->
+    <img :src="backgroundImg" alt="background" />
     <div class="overlay"></div>
   </div>
 </template>

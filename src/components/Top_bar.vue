@@ -2,10 +2,10 @@
 <script setup name="Top_bar">
 import { RouterLink, useRoute } from 'vue-router';
 import { computed } from 'vue';
-import Config from '@/config/Config';
+import { header } from '@/config/Header';
 import Music from "@/components/home/Music.vue";
 
-const { title } = Config;
+const { title } = header;
 const route = useRoute();
 
 const isHome = computed(() => route.name === 'home' || route.path === '/');
