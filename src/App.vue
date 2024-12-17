@@ -12,6 +12,9 @@ import { RouterView } from 'vue-router'
       <component :is="Component" v-show="true"></component>
     </keep-alive>
   </RouterView>
+  <img
+    src="https://count.getloli.com/@xiaoqvan.github.io?name=xiaoqvan.github.io&theme=rule34&padding=9&offset=0&align=top&scale=1&pixelated=1&darkmode=auto"
+    alt="tj" style="display: none;">
 </template>
 
 <style scoped>
