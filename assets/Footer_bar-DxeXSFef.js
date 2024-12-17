@@ -1,1 +1,0 @@
-import{F as e}from"./formerbg-7Ej6OEYY.js";import{_ as o,a as t,c as a,f as c,d as r}from"./main-KkCvyaTZ.js";const s=r({name:"Footer"}),_=Object.assign(s,{setup(n){return(p,f)=>(t(),a("footer",null,[c(e)]))}}),l=o(_,[["__scopeId","data-v-9d92ccf9"]]);export{l as F};
